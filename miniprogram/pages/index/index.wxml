@@ -1,0 +1,171 @@
+<view class="status-mask" style="height: {{statusBarHeight}}px;"></view>
+<view class="pad-page" style="padding-top: {{statusBarHeight}}px;">
+  <view class="mast">
+    <view class="mast-row">
+      <view>
+        <text class="logo">漫途</text>
+        <text class="logo-sub">{{monthLabel}} · 适合出发的几条路</text>
+      </view>
+      <view class="logo-badge">径</view>
+    </view>
+    <view class="search" bindtap="goSearch" hover-class="tap-hover">
+      <view class="s-ico">
+        <view class="s-ring"></view>
+        <view class="s-bar"></view>
+      </view>
+      <text class="s-ph">搜索目的地、攻略或季节</text>
+    </view>
+  </view>
+
+  <view class="hero-wrap">
+    <swiper class="hero" circular autoplay interval="4200" duration="480" bindchange="onHeroChange">
+      <swiper-item wx:for="{{heroes}}" wx:key="id">
+        <view class="hero-card" data-id="{{item.id}}" bindtap="onGuide">
+          <image class="hero-img" src="{{item.cover}}" mode="aspectFill" />
+          <view class="hero-mask"></view>
+          <view class="hero-bottom">
+            <view class="hero-copy">
+              <text class="hero-cat">{{item.category}} · {{item.days}}天</text>
+              <text class="hero-title">{{item.title}}</text>
+              <text class="hero-sub two-line">{{item.excerpt}}</text>
+            </view>
+            <view class="hero-pager">
+              <text class="hero-now">{{heroLabel}}</text>
+              <text class="hero-all"> / {{heroTotal}}</text>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <view class="entries">
+    <view class="entry" wx:for="{{entries}}" wx:key="name" data-type="{{item.type}}" data-value="{{item.value}}" bindtap="onEntry" hover-class="tap-hover">
+      <view class="entry-in">
+        <text class="entry-mark">{{item.mark}}</text>
+        <text class="entry-name">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="ai-card" bindtap="goAiPlan" hover-class="tap-hover">
+    <view class="ai-card-left">
+      <text class="ai-card-kicker">AI 路线定制</text>
+      <text class="ai-card-title">说天数和偏好，给你排一条线</text>
+      <text class="ai-card-sub">目的地 · 预算 · 节奏，一键生成</text>
+    </view>
+    <view class="ai-card-badge">AI</view>
+  </view>
+
+  <view class="ai-card community-entry" bindtap="goCommunity" hover-class="tap-hover">
+    <view class="ai-card-left">
+      <text class="ai-card-kicker">攻略社区</text>
+      <text class="ai-card-title">看看大家都在怎么走</text>
+      <text class="ai-card-sub">文旅攻略广场 · 发布你的路线 · AI 优化建议</text>
+    </view>
+    <view class="ai-card-badge">社</view>
+  </view>
+
+  <view class="ai-card guide-entry" bindtap="goMyGuides" hover-class="tap-hover">
+    <view class="ai-card-left">
+      <text class="ai-card-kicker">我的攻略</text>
+      <text class="ai-card-title">写下你自己的文旅路线</text>
+      <text class="ai-card-sub">本地保存 · AI 补充推荐优化</text>
+    </view>
+    <view class="ai-card-badge">笔</view>
+  </view>
+
+  <view class="sec">
+    <view class="sec-head">
+      <view>
+        <text class="sec-kicker">目的地</text>
+        <text class="sec-title">这个季节，值得出发</text>
+      </view>
+      <text class="sec-more" bindtap="goDests">全部</text>
+    </view>
+  </view>
+</view>
+
+<scroll-view class="bleed" scroll-x show-scrollbar="{{false}}">
+  <view
+    class="dest-card"
+    wx:for="{{destinations}}"
+    wx:key="id"
+    style="margin-left: {{index === 0 ? '32rpx' : '0'}}; margin-right: {{index === destinations.length - 1 ? '32rpx' : '16rpx'}};"
+    data-id="{{item.id}}"
+    bindtap="onDest"
+    hover-class="tap-hover"
+  >
+    <image src="{{item.cover}}" mode="aspectFill" />
+    <view class="dest-mask"></view>
+    <view class="dest-copy">
+      <text class="dest-area">{{item.area}} · {{item.group}}</text>
+      <text class="dest-name">{{item.name}}</text>
+      <text class="dest-sub">{{item.season}} · {{item.temp}}</text>
+    </view>
+  </view>
+</scroll-view>
+
+<view class="pad-page rest">
+  <view class="sec tight">
+    <view class="sec-head">
+      <view>
+        <text class="sec-kicker">目录</text>
+        <text class="sec-title">可以跟着走</text>
+      </view>
+      <text class="sec-more" bindtap="goGuides">全部 {{guideTotal}} 篇</text>
+    </view>
+    <view class="toc">
+      <view class="toc-item" wx:for="{{toc}}" wx:key="id" data-id="{{item.id}}" bindtap="onGuide" hover-class="tap-hover">
+        <text class="toc-no">0{{index + 1}}</text>
+        <view class="toc-body">
+          <text class="toc-title two-line">{{item.title}}</text>
+          <text class="toc-meta">{{item.city}} · {{item.days}}天 · {{item.reads}}阅读</text>
+        </view>
+        <image class="toc-img" src="{{item.cover}}" mode="aspectFill" lazy-load />
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="quote">
+  <text class="quote-mark">“</text>
+  <text class="quote-text">好的攻略不是把景点排满，而是告诉你哪一段路值得慢下来。</text>
+  <text class="quote-from">漫途编辑部</text>
+</view>
+
+<view class="pad-page rest">
+  <view class="sec tight">
+    <view class="sec-head">
+      <view>
+        <text class="sec-kicker">灵感</text>
+        <text class="sec-title">再走远一点</text>
+      </view>
+    </view>
+    <view class="bento">
+      <view class="bento-main" data-id="{{bentoMain.id}}" bindtap="onGuide" hover-class="tap-hover">
+        <image src="{{bentoMain.cover}}" mode="aspectFill" />
+        <view class="bento-mask"></view>
+        <view class="bento-copy">
+          <text class="bento-kicker">{{bentoMain.city}}</text>
+          <text class="bento-title two-line">{{bentoMain.title}}</text>
+        </view>
+      </view>
+      <view class="bento-side">
+        <view class="bento-sub" wx:for="{{bentoSide}}" wx:key="id" data-id="{{item.id}}" bindtap="onGuide" hover-class="tap-hover">
+          <image src="{{item.cover}}" mode="aspectFill" />
+          <view class="bento-mask"></view>
+          <view class="bento-copy">
+            <text class="bento-kicker">{{item.city}}</text>
+            <text class="bento-title two-line">{{item.title}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer">
+    <text class="footer-logo">漫途</text>
+    <text class="footer-text">把好风景，写成能跟着走的路</text>
+  </view>
+</view>

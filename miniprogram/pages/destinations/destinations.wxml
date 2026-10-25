@@ -1,0 +1,45 @@
+<view class="status-mask" style="height: {{statusBarHeight}}px;"></view>
+<view class="pad-page" style="padding-top: {{statusBarHeight}}px;">
+  <view class="page-head">
+    <text class="page-kicker">先选一个方向</text>
+    <view class="page-title-row">
+      <text class="page-title">目的地</text>
+      <text class="page-count">{{total}} 座</text>
+    </view>
+  </view>
+
+  <view class="search-line" bindtap="goSearch" hover-class="tap-hover">
+    <view class="s-ico">
+      <view class="s-ring"></view>
+      <view class="s-bar"></view>
+    </view>
+    <text class="s-ph">搜索城市或地区</text>
+  </view>
+
+  <view class="filter-bar" style="top: {{statusBarHeight}}px;">
+    <scroll-view class="filter-scroll" scroll-x show-scrollbar="{{false}}">
+      <view class="pills">
+        <view class="pill {{filter === item ? 'on' : ''}}" wx:for="{{filters}}" wx:key="*this" data-filter="{{item}}" bindtap="onFilter">{{item}}</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="d-grid" wx:if="{{list.length}}">
+    <view class="d-card" wx:for="{{list}}" wx:key="id" data-id="{{item.id}}" bindtap="onDest" hover-class="tap-hover">
+      <image src="{{item.cover}}" mode="aspectFill" lazy-load />
+      <view class="d-mask"></view>
+      <text class="d-temp">{{item.temp}}</text>
+      <view class="d-copy">
+        <text class="d-area">{{item.area}}</text>
+        <text class="d-name">{{item.name}}</text>
+        <text class="d-sub">{{item.guideCount}} 篇攻略 · {{item.daysText}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:else>
+    <view class="empty-mark">途</view>
+    <text class="empty-title">这一带还没有收录</text>
+    <text class="empty-desc">换一个地区看看。</text>
+  </view>
+</view>

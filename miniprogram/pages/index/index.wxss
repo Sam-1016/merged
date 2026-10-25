@@ -1,0 +1,450 @@
+.mast {
+  padding-top: 12rpx;
+}
+
+.mast-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: block;
+  font-size: 52rpx;
+  font-weight: 600;
+  letter-spacing: 6rpx;
+}
+
+.logo-sub {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: var(--muted);
+}
+
+.logo-badge {
+  width: 76rpx;
+  height: 76rpx;
+  border-radius: 24rpx;
+  background: var(--pine);
+  color: #f6f1e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 34rpx;
+}
+
+.search {
+  margin-top: 28rpx;
+  height: 84rpx;
+  border-radius: 999rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  display: flex;
+  align-items: center;
+  padding: 0 28rpx;
+}
+
+.s-ph {
+  margin-left: 14rpx;
+  color: var(--faint);
+  font-size: 26rpx;
+}
+
+.hero-wrap {
+  position: relative;
+  margin-top: 28rpx;
+}
+
+.hero,
+.hero-card,
+.hero-img,
+.hero swiper-item {
+  height: 640rpx;
+}
+
+.hero {
+  border-radius: 32rpx;
+  overflow: hidden;
+}
+
+.hero-card {
+  position: relative;
+  border-radius: 32rpx;
+  overflow: hidden;
+}
+
+.hero-img {
+  width: 100%;
+}
+
+.hero-mask,
+.dest-mask,
+.bento-mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(20, 14, 10, 0) 0%, rgba(20, 14, 10, 0.78) 100%);
+}
+
+.hero-mask {
+  height: 420rpx;
+}
+
+.hero-bottom {
+  position: absolute;
+  left: 28rpx;
+  right: 28rpx;
+  bottom: 32rpx;
+  display: flex;
+  align-items: flex-end;
+  color: #f7f3ed;
+}
+
+.hero-copy {
+  flex: 1;
+  min-width: 0;
+  margin-right: 16rpx;
+}
+
+.hero-cat,
+.bento-kicker,
+.dest-area {
+  display: block;
+  font-size: 22rpx;
+  letter-spacing: 2rpx;
+}
+
+.hero-title {
+  display: block;
+  margin-top: 12rpx;
+  font-size: 40rpx;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.hero-sub {
+  display: block;
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  line-height: 1.55;
+  color: rgba(247, 243, 237, 0.88);
+}
+
+.hero-pager {
+  flex: none;
+  color: #fff;
+}
+
+.hero-now {
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 36rpx;
+}
+
+.hero-all {
+  font-size: 22rpx;
+  opacity: 0.75;
+}
+
+.entries {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 28rpx -8rpx 0;
+}
+
+.entry {
+  width: 25%;
+  padding: 8rpx;
+}
+
+.entry-in {
+  min-height: 132rpx;
+  border-radius: 24rpx;
+  background: var(--sand);
+  border: 1rpx solid rgba(31, 26, 23, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.entry-mark {
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 40rpx;
+  line-height: 1;
+  color: var(--pine);
+}
+
+.entry-name {
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  color: var(--muted);
+}
+
+.ai-card {
+  margin-top: 24rpx;
+  padding: 30rpx 32rpx;
+  border-radius: 28rpx;
+  background: var(--pine);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ai-card-kicker {
+  display: block;
+  font-size: 22rpx;
+  letter-spacing: 3rpx;
+  color: rgba(246, 241, 232, 0.62);
+}
+
+.ai-card-title {
+  display: block;
+  margin-top: 10rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #f6f1e8;
+}
+
+.ai-card-sub {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  color: rgba(246, 241, 232, 0.62);
+}
+
+.ai-card-badge {
+  width: 84rpx;
+  height: 84rpx;
+  border-radius: 26rpx;
+  background: rgba(246, 241, 232, 0.16);
+  color: #f6f1e8;
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.entry:nth-child(2) .entry-mark { color: #c4622d; }
+.entry:nth-child(3) .entry-mark { color: #2c6e8a; }
+.entry:nth-child(4) .entry-mark { color: #8a4b2f; }
+.entry:nth-child(6) .entry-mark { color: #8c4e63; }
+.entry:nth-child(8) .entry-mark { color: #a15c32; }
+
+.bleed {
+  width: 750rpx;
+  height: 400rpx;
+  margin-top: 22rpx;
+  white-space: nowrap;
+}
+
+.dest-card {
+  display: inline-block;
+  position: relative;
+  width: 268rpx;
+  height: 380rpx;
+  border-radius: 28rpx;
+  overflow: hidden;
+  vertical-align: top;
+  white-space: normal;
+}
+
+.dest-card image {
+  width: 268rpx;
+  height: 380rpx;
+}
+
+.dest-mask {
+  height: 220rpx;
+}
+
+.dest-copy,
+.bento-copy {
+  position: absolute;
+  left: 20rpx;
+  right: 20rpx;
+  bottom: 20rpx;
+  color: #f7f3ed;
+}
+
+.dest-name {
+  display: block;
+  margin-top: 6rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+.dest-sub {
+  display: block;
+  margin-top: 6rpx;
+  font-size: 22rpx;
+  color: rgba(247, 243, 237, 0.82);
+}
+
+.rest {
+  padding-top: 0;
+}
+
+.tight {
+  margin-top: 48rpx;
+}
+
+.toc-item {
+  display: flex;
+  align-items: center;
+  padding: 26rpx 0;
+  border-bottom: 1rpx solid var(--line);
+}
+
+.toc-no {
+  width: 64rpx;
+  flex: none;
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 32rpx;
+  color: var(--persimmon);
+}
+
+.toc-body {
+  flex: 1;
+  min-width: 0;
+  margin-right: 20rpx;
+}
+
+.toc-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.toc-meta {
+  display: block;
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  color: var(--muted);
+}
+
+.toc-img {
+  width: 132rpx;
+  height: 100rpx;
+  border-radius: 16rpx;
+  flex: none;
+}
+
+.quote {
+  margin-top: 48rpx;
+  padding: 56rpx 48rpx 48rpx;
+  background: var(--pine);
+  color: #f3efe8;
+}
+
+.quote-mark {
+  display: block;
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 72rpx;
+  line-height: 0.8;
+  color: #e7c2a4;
+}
+
+.quote-text {
+  display: block;
+  margin-top: 12rpx;
+  font-size: 34rpx;
+  line-height: 1.7;
+}
+
+.quote-from {
+  display: block;
+  margin-top: 24rpx;
+  font-size: 22rpx;
+  letter-spacing: 3rpx;
+  color: rgba(243, 239, 232, 0.72);
+}
+
+.bento {
+  display: flex;
+  height: 480rpx;
+  margin-top: 16rpx;
+}
+
+.bento-main,
+.bento-sub {
+  position: relative;
+  border-radius: 28rpx;
+  overflow: hidden;
+}
+
+.bento-main {
+  flex: 1.15;
+  margin-right: 14rpx;
+}
+
+.bento-side {
+  flex: 0.85;
+  display: flex;
+  flex-direction: column;
+}
+
+.bento-sub {
+  flex: 1;
+}
+
+.bento-sub + .bento-sub {
+  margin-top: 14rpx;
+}
+
+.bento image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bento-mask {
+  height: 70%;
+}
+
+.bento-kicker {
+  color: rgba(247, 243, 237, 0.8);
+}
+
+.bento-title {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.footer {
+  margin-top: 72rpx;
+  padding-bottom: 12rpx;
+  text-align: center;
+}
+
+.footer-logo {
+  display: block;
+  font-size: 30rpx;
+  letter-spacing: 6rpx;
+  font-weight: 600;
+}
+
+.footer-text {
+  display: block;
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  color: var(--muted);
+}
+
+.guide-entry {
+  background: var(--persimmon);
+}
+
+/* 攻略社区入口卡片（渐变松绿，与 AI 卡、我的攻略卡视觉区分） */
+.community-entry {
+  background: linear-gradient(135deg, #2f6b50, var(--pine));
+}

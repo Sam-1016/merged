@@ -1,0 +1,53 @@
+<view class="status-mask" style="height: {{statusBarHeight}}px;"></view>
+<view class="pad-page" style="padding-top: {{statusBarHeight}}px;">
+  <view class="page-head">
+    <text class="page-kicker">按主题翻</text>
+    <view class="page-title-row">
+      <text class="page-title">攻略</text>
+      <text class="page-count">{{total}} 篇</text>
+    </view>
+  </view>
+
+  <view class="search-line" bindtap="goSearch" hover-class="tap-hover">
+    <view class="s-ico">
+      <view class="s-ring"></view>
+      <view class="s-bar"></view>
+    </view>
+    <text class="s-ph">搜索城市、季节或吃什么</text>
+  </view>
+
+  <view class="filter-bar" style="top: {{statusBarHeight}}px;">
+    <scroll-view class="filter-scroll" scroll-x show-scrollbar="{{false}}">
+      <view class="pills">
+        <view class="pill {{filter === item ? 'on' : ''}}" wx:for="{{filters}}" wx:key="*this" data-filter="{{item}}" bindtap="onFilter">{{item}}</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="feature" wx:if="{{featured}}" data-id="{{featured.id}}" bindtap="onGuide" hover-class="tap-hover">
+    <image class="feature-img" src="{{featured.cover}}" mode="aspectFill" />
+    <view class="feature-mask"></view>
+    <view class="feature-copy">
+      <text class="feature-cat">本期 · {{featured.category}}</text>
+      <text class="feature-title">{{featured.title}}</text>
+      <text class="feature-meta">{{featured.city}} · {{featured.days}}天 · {{featured.author}}</text>
+    </view>
+  </view>
+
+  <view wx:if="{{list.length}}">
+    <view class="g-row" wx:for="{{list}}" wx:key="id" data-id="{{item.id}}" bindtap="onGuide" hover-class="tap-hover">
+      <image class="g-cover" src="{{item.cover}}" mode="aspectFill" lazy-load />
+      <view class="g-body">
+        <text class="g-cat">{{item.category}} · {{item.city}}</text>
+        <text class="g-title two-line">{{item.title}}</text>
+        <text class="g-meta">{{item.days}}天 · {{item.reads}}阅读</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{total === 0}}">
+    <view class="empty-mark">空</view>
+    <text class="empty-title">这个分类还是空的</text>
+    <text class="empty-desc">换一个主题，或者回到全部。</text>
+  </view>
+</view>
