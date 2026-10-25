@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "AI 讲解",
+  "usingComponents": {
+    "nav-bar": "/components/nav-bar/nav-bar"
+  }
+}

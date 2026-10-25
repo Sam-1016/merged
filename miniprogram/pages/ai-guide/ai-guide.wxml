@@ -1,0 +1,45 @@
+<nav-bar title="AI 讲解" solid="{{true}}" theme="dark" />
+
+<view class="pad-page" wx:if="{{ready && found}}">
+  <view class="head">
+    <view class="ai-badge">AI</view>
+    <view class="head-body">
+      <text class="page-kicker">漫途 AI 讲解</text>
+      <text class="head-title two-line">{{title}}</text>
+      <text class="head-sub">{{sub}}</text>
+    </view>
+  </view>
+
+  <scroll-view class="topic-bar" scroll-x show-scrollbar="{{false}}">
+    <view class="pills">
+      <view
+        class="pill {{active === item.key ? 'on' : ''}}"
+        wx:for="{{topics}}"
+        wx:key="key"
+        data-key="{{item.key}}"
+        bindtap="onTopic"
+        hover-class="tap-hover"
+      >{{item.name}}</view>
+    </view>
+  </scroll-view>
+
+  <view class="bubble" bindtap="skip">
+    <view class="bubble-top">
+      <text class="bubble-from">AI 讲解员</text>
+      <text class="bubble-state" wx:if="{{typing}}">正在讲解…</text>
+      <text class="bubble-state done" wx:elif="{{done}}">讲完了</text>
+    </view>
+    <text class="bubble-text">{{shown}}<text class="cursor" wx:if="{{typing}}">|</text></text>
+    <view class="bubble-foot" wx:if="{{done}}">
+      <view class="mini-btn" catchtap="onReplay" hover-class="tap-hover">再讲一遍</view>
+      <text class="foot-tip">切换上方主题，听别的讲法</text>
+    </view>
+  </view>
+</view>
+
+<view class="empty" wx:if="{{ready && !found}}">
+  <view class="empty-mark">讲</view>
+  <text class="empty-title">暂时没有可讲的内容</text>
+  <text class="empty-desc">这一站的内容还在整理，换一篇攻略试试。</text>
+  <view class="btn" bindtap="onBackHome">回攻略页</view>
+</view>

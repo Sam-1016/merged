@@ -1,0 +1,272 @@
+.lead {
+  display: block;
+  margin-bottom: 20rpx;
+  font-size: 26rpx;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.draft {
+  display: flex;
+  margin-bottom: 24rpx;
+  padding: 18rpx;
+  border-radius: 28rpx;
+  background: var(--card);
+}
+
+.draft image {
+  width: 168rpx;
+  height: 168rpx;
+  border-radius: 20rpx;
+  flex: none;
+}
+
+.draft-body {
+  flex: 1;
+  min-width: 0;
+  margin-left: 18rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.draft-top,
+.ticket-top,
+.ticket-metrics {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.status {
+  padding: 4rpx 12rpx;
+  border-radius: 999rpx;
+  background: var(--pine-soft);
+  color: var(--pine);
+  font-size: 20rpx;
+}
+
+.date,
+.draft-meta,
+.day-time,
+.lbl {
+  font-size: 22rpx;
+  color: var(--muted);
+}
+
+.draft-title {
+  display: block;
+  margin-top: 14rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.draft-meta {
+  margin-top: auto;
+  padding-top: 12rpx;
+}
+
+.ticket {
+  padding: 32rpx;
+  border-radius: 28rpx;
+  background: var(--card);
+}
+
+.kicker {
+  font-size: 22rpx;
+  letter-spacing: 3rpx;
+  color: var(--persimmon);
+}
+
+.ticket-title {
+  display: block;
+  margin-top: 18rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.ticket-metrics {
+  margin-top: 28rpx;
+  justify-content: flex-start;
+}
+
+.ticket-metrics view {
+  margin-right: 40rpx;
+}
+
+.val {
+  display: block;
+  margin-top: 6rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.dash {
+  margin: 28rpx 0;
+  border-top: 2rpx dashed rgba(31, 26, 23, 0.16);
+}
+
+.stops {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.stop {
+  font-size: 26rpx;
+  font-weight: 600;
+}
+
+.stop-arrow {
+  margin: 0 10rpx;
+  color: var(--persimmon);
+}
+
+.day {
+  display: flex;
+  margin-bottom: 28rpx;
+}
+
+.day-no {
+  width: 72rpx;
+  flex: none;
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 36rpx;
+  color: var(--persimmon);
+}
+
+.day-body {
+  flex: 1;
+}
+
+.day-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.day-time,
+.day-desc {
+  display: block;
+}
+
+.day-time {
+  margin-top: 6rpx;
+}
+
+.day-desc {
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  line-height: 1.7;
+  color: #3a342e;
+}
+
+.place {
+  display: inline-block;
+  margin: 12rpx 12rpx 0 0;
+  padding: 8rpx 16rpx;
+  border-radius: 999rpx;
+  background: var(--sand);
+  color: var(--pine);
+  font-size: 22rpx;
+}
+
+.cost {
+  display: flex;
+  align-items: center;
+  margin-bottom: 18rpx;
+}
+
+.cost-name {
+  width: 140rpx;
+  flex: none;
+  font-size: 24rpx;
+  color: var(--muted);
+}
+
+.cost-track {
+  flex: 1;
+  height: 10rpx;
+  border-radius: 999rpx;
+  background: #e6e0d8;
+  overflow: hidden;
+}
+
+.cost-fill {
+  height: 100%;
+  background: var(--pine);
+}
+
+.cost-val {
+  width: 120rpx;
+  text-align: right;
+  font-size: 24rpx;
+  font-weight: 600;
+}
+
+.back-link {
+  margin: 36rpx 0 12rpx;
+  text-align: center;
+  color: var(--pine);
+  font-size: 26rpx;
+}
+
+.back-link.danger {
+  color: var(--persimmon);
+}
+
+.summary {
+  display: block;
+  margin-top: 28rpx;
+  font-size: 26rpx;
+  line-height: 1.8;
+  color: #3a342e;
+}
+
+.ai-entry {
+  margin: 8rpx 0 12rpx;
+  padding: 24rpx 28rpx;
+  border-radius: 24rpx;
+  background: var(--pine);
+  display: flex;
+  align-items: center;
+}
+
+.ai-entry-badge {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 18rpx;
+  background: rgba(246, 241, 232, 0.16);
+  color: #f6f1e8;
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 26rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.ai-entry-body {
+  flex: 1;
+  min-width: 0;
+  margin-left: 20rpx;
+}
+
+.ai-entry-title {
+  display: block;
+  color: #f6f1e8;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.ai-entry-sub {
+  display: block;
+  margin-top: 4rpx;
+  color: rgba(246, 241, 232, 0.62);
+  font-size: 22rpx;
+}
+
+.ai-entry .arrow {
+  border-color: rgba(246, 241, 232, 0.6);
+}

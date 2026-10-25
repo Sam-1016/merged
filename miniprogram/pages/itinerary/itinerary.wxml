@@ -1,0 +1,105 @@
+<nav-bar title="{{mode === 'plan' ? '行程' : '行程草案'}}" solid="{{true}}" theme="dark" />
+
+<view class="pad-page" wx:if="{{mode === 'list'}}">
+  <text class="lead">还没出发的路线，先按天数放在这里。</text>
+
+  <view class="ai-entry" bindtap="goAiPlan" hover-class="tap-hover">
+    <view class="ai-entry-badge">AI</view>
+    <view class="ai-entry-body">
+      <text class="ai-entry-title">AI 路线定制</text>
+      <text class="ai-entry-sub">说天数和偏好，生成一条新路线</text>
+    </view>
+    <view class="arrow"></view>
+  </view>
+
+  <block wx:if="{{aiPlans.length}}">
+    <text class="block-title">AI 定制</text>
+    <view class="draft" wx:for="{{aiPlans}}" wx:key="id" data-id="{{item.id}}" bindtap="onOpenAi" hover-class="tap-hover">
+      <image src="{{item.cover}}" mode="aspectFill" />
+      <view class="draft-body">
+        <view class="draft-top">
+          <text class="status">AI 定制</text>
+          <text class="date">{{item.createdAt}}</text>
+        </view>
+        <text class="draft-title two-line">{{item.title}}</text>
+        <text class="draft-meta">{{item.destName}} · {{item.days}}天 · {{item.budgetText}}</text>
+      </view>
+    </view>
+  </block>
+
+  <text class="block-title" wx:if="{{drafts.length}}">攻略草案</text>
+  <view class="draft" wx:for="{{drafts}}" wx:key="id" data-id="{{item.id}}" bindtap="onOpen" hover-class="tap-hover">
+    <image src="{{item.cover}}" mode="aspectFill" />
+    <view class="draft-body">
+      <view class="draft-top">
+        <text class="status">{{item.status}}</text>
+        <text class="date">{{item.date}}</text>
+      </view>
+      <text class="draft-title two-line">{{item.title}}</text>
+      <text class="draft-meta">{{item.city}} · {{item.days}}天 · {{item.budgetText}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="pad-page" wx:elif="{{guide}}">
+  <view class="ticket">
+    <view class="ticket-top">
+      <text class="kicker">{{isAi ? 'AI 定制' : '按这篇走'}}</text>
+      <text class="status">草案</text>
+    </view>
+    <text class="ticket-title">{{guide.title}}</text>
+    <view class="ticket-metrics">
+      <view>
+        <text class="lbl">天数</text>
+        <text class="val">{{guide.days}}天</text>
+      </view>
+      <view>
+        <text class="lbl">预算</text>
+        <text class="val">{{guide.budgetText}}</text>
+      </view>
+      <view>
+        <text class="lbl">节奏</text>
+        <text class="val">{{guide.rhythm}}</text>
+      </view>
+    </view>
+    <view class="dash"></view>
+    <view class="stops">
+      <block wx:for="{{stops}}" wx:key="*this">
+        <text class="stop">{{item}}</text>
+        <text wx:if="{{index < stops.length - 1}}" class="stop-arrow">→</text>
+      </block>
+    </view>
+  </view>
+
+  <text class="summary" wx:if="{{isAi && guide.summary}}">{{guide.summary}}</text>
+
+  <text class="block-title">一天一天</text>
+  <view class="day" wx:for="{{guide.daysPlan}}" wx:key="day">
+    <view class="day-no">{{item.day}}</view>
+    <view class="day-body">
+      <text class="day-title">{{item.title}}</text>
+      <text class="day-time">{{item.time}}</text>
+      <text class="day-desc">{{item.desc}}</text>
+      <view class="places">
+        <text class="place" wx:for="{{item.places}}" wx:for-item="place" wx:key="*this">{{place}}</text>
+      </view>
+    </view>
+  </view>
+
+  <text class="block-title">预算怎么分</text>
+  <view class="cost" wx:for="{{guide.costs}}" wx:key="name">
+    <text class="cost-name">{{item.name}}</text>
+    <view class="cost-track">
+      <view class="cost-fill" style="width: {{item.percent}}%;"></view>
+    </view>
+    <text class="cost-val">{{item.value}}</text>
+  </view>
+
+  <view class="back-link" wx:if="{{!isAi}}" bindtap="onGuide">回到原攻略</view>
+  <view class="back-link danger" wx:if="{{isAi}}" bindtap="onRemoveAi">删除这条 AI 行程</view>
+</view>
+
+<view class="empty" wx:else>
+  <view class="empty-mark">稿</view>
+  <text class="empty-title">这条草案不在了</text>
+</view>

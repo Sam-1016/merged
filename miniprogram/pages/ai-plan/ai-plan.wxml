@@ -1,0 +1,227 @@
+<nav-bar title="AI 路线定制" solid="{{true}}" theme="dark" />
+
+<!-- 表单 -->
+<view class="pad-page has-dock" wx:if="{{mode === 'form'}}">
+  <text class="page-kicker">AI 路线定制</text>
+  <text class="form-title">告诉我偏好，帮你排一条能跟着走的线</text>
+
+  <view class="field">
+    <text class="field-label">目的地</text>
+    <picker class="picker" range="{{destNames}}" value="{{destIndex}}" bindchange="onDest">
+      <view class="picker-in">
+        <text>{{destNames[destIndex]}}</text>
+        <view class="arrow"></view>
+      </view>
+    </picker>
+  </view>
+
+  <view class="field">
+    <text class="field-label">天数（{{days}} 天）</text>
+    <slider min="1" max="7" value="{{days}}" activeColor="#1f4d3a" block-size="22" bindchange="onDays" />
+  </view>
+
+  <view class="field">
+    <text class="field-label">预算区间（元/人）</text>
+    <view class="range">
+      <input class="range-in" type="number" placeholder="下限，如 1200" value="{{budgetMin}}" bindinput="onBudgetMin" />
+      <text class="range-sep">—</text>
+      <input class="range-in" type="number" placeholder="上限，如 2000" value="{{budgetMax}}" bindinput="onBudgetMax" />
+    </view>
+    <text class="field-hint">留空则按目的地参考预算自动估算</text>
+  </view>
+
+  <view class="field">
+    <text class="field-label">偏好（可多选）</text>
+    <view class="chips">
+      <view
+        class="chip {{item.on ? 'on' : ''}}"
+        wx:for="{{prefs}}"
+        wx:key="name"
+        data-index="{{index}}"
+        bindtap="onPref"
+        hover-class="tap-hover"
+      >{{item.name}}</view>
+    </view>
+  </view>
+
+  <view class="field">
+    <text class="field-label">同行</text>
+    <view class="seg">
+      <view
+        class="seg-item {{peopleIndex === index ? 'on' : ''}}"
+        wx:for="{{people}}"
+        wx:key="*this"
+        data-index="{{index}}"
+        bindtap="onPeople"
+      >{{item}}</view>
+    </view>
+  </view>
+
+  <view class="field">
+    <text class="field-label">节奏</text>
+    <view class="seg">
+      <view
+        class="seg-item {{rhythmIndex === index ? 'on' : ''}}"
+        wx:for="{{rhythms}}"
+        wx:key="*this"
+        data-index="{{index}}"
+        bindtap="onRhythm"
+      >{{item}}</view>
+    </view>
+  </view>
+
+  <view class="dock">
+    <view class="dock-btn" bindtap="onGenerate" hover-class="tap-hover">让 AI 排路线</view>
+  </view>
+</view>
+
+<!-- 生成中 -->
+<view class="loading" wx:if="{{mode === 'loading'}}">
+  <view class="loading-mark">AI</view>
+  <text class="loading-text">正在为你排路线<text class="dot-a">.</text><text class="dot-b">.</text><text class="dot-c">.</text></text>
+  <text class="loading-sub">结合目的地、天数与偏好做取舍</text>
+</view>
+
+<!-- 结果 -->
+<view class="pad-page has-dock" wx:if="{{mode === 'result' && plan}}">
+  <view class="ticket">
+    <view class="ticket-top">
+      <text class="kicker">AI 定制</text>
+      <text class="status">{{plan.createdAt}}</text>
+    </view>
+    <text class="ticket-title">{{plan.title}}</text>
+    <view class="ticket-metrics">
+      <view>
+        <text class="lbl">天数</text>
+        <text class="val">{{plan.days}}天</text>
+      </view>
+      <view>
+        <text class="lbl">预算</text>
+        <text class="val">{{plan.budgetText}}</text>
+      </view>
+      <view>
+        <text class="lbl">节奏</text>
+        <text class="val">{{plan.rhythm}}</text>
+      </view>
+    </view>
+    <view class="dash"></view>
+    <view class="stops">
+      <block wx:for="{{plan.stops}}" wx:key="*this">
+        <text class="stop">{{item}}</text>
+        <text wx:if="{{index < plan.stops.length - 1}}" class="stop-arrow">→</text>
+      </block>
+    </view>
+  </view>
+
+  <text class="summary">{{plan.summary}}</text>
+
+  <view class="tags" wx:if="{{plan.prefs.length}}">
+    <text class="tag" wx:for="{{plan.prefs}}" wx:key="*this">{{item}}</text>
+  </view>
+
+  <text class="block-title">一天一天</text>
+  <view class="day" wx:for="{{plan.daysPlan}}" wx:key="day">
+    <view class="day-no">{{item.day}}</view>
+    <view class="day-body">
+      <text class="day-title">{{item.title}}</text>
+      <text class="day-time">{{item.time}}</text>
+      <text class="day-desc">{{item.desc}}</text>
+
+      <view class="legs" wx:if="{{item.legs.length}}">
+        <view class="leg" wx:for="{{item.legs}}" wx:for-item="leg" wx:key="index">
+          <view class="leg-rail">
+            <view class="leg-dot {{leg.mode === '步行' ? 'walk' : (leg.mode === '公交' ? 'bus' : 'taxi')}}"></view>
+            <view class="leg-line" wx:if="{{index < item.legs.length - 1}}"></view>
+          </view>
+          <text class="leg-text">从{{leg.from}}出发，建议{{leg.mode}}前往{{leg.to}}，约{{leg.minutes}}分钟{{leg.costText ? '（' + leg.costText + '）' : ''}}</text>
+        </view>
+      </view>
+
+      <block wx:for="{{item.placeDetails}}" wx:for-item="spot" wx:key="name">
+        <view class="spot-detail" wx:if="{{spot.ticket}}">
+          <text class="spot-detail-name">{{spot.name}}</text>
+          <text class="spot-detail-meta">{{spot.ticket}} · {{spot.openTime}} · 建议{{spot.suggest}}</text>
+        </view>
+        <view class="food-card" wx:for="{{spot.foods}}" wx:for-item="food" wx:key="name">
+          <image class="food-img" src="{{food.image}}" mode="aspectFill" lazy-load />
+          <view class="food-body">
+            <text class="food-title">{{food.name}}</text>
+            <text class="food-sub">{{spot.name}}附近</text>
+            <text class="food-desc">{{food.desc}}</text>
+          </view>
+        </view>
+      </block>
+
+      <text class="ticket-sum" wx:if="{{item.ticketText}}">{{item.ticketText}}</text>
+    </view>
+  </view>
+
+  <text class="block-title">预算怎么分</text>
+  <view class="cost" wx:for="{{plan.costs}}" wx:key="name">
+    <text class="cost-name">{{item.name}}</text>
+    <view class="cost-track">
+      <view class="cost-fill" style="width: {{item.percent}}%;"></view>
+    </view>
+    <text class="cost-val">{{item.value}}</text>
+  </view>
+  <view class="budget-line">人均 {{plan.budgetText}}，按 {{plan.days}} 天估算</view>
+
+  <block wx:if="{{plan.stations.length}}">
+    <text class="block-title">大交通怎么到</text>
+    <view class="station" wx:for="{{plan.stations}}" wx:key="name">
+      <view class="station-kind">{{item.kind}}</view>
+      <view class="station-body">
+        <text class="station-name">{{item.name}}</text>
+        <text class="station-desc">{{item.desc}}</text>
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{plan.classicFoods.length}}">
+    <text class="block-title">当地经典美食</text>
+    <view class="classic" wx:for="{{plan.classicFoods}}" wx:key="name">
+      <text class="classic-no">0{{index + 1}}</text>
+      <view class="classic-body">
+        <text class="classic-name">{{item.name}}</text>
+        <text class="classic-desc">{{item.desc}}</text>
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{plan.stay}}">
+    <text class="block-title">住哪里</text>
+    <text class="stay">{{plan.stay}}</text>
+  </block>
+
+  <text class="block-title">出发前看一眼</text>
+  <view class="tip" wx:for="{{plan.tips}}" wx:key="*this">
+    <text class="tip-no">0{{index + 1}}</text>
+    <text class="tip-text">{{item}}</text>
+  </view>
+
+  <block wx:if="{{plan.notes.length}}">
+    <text class="block-title">博主怎么说</text>
+    <view class="note" wx:for="{{plan.notes}}" wx:key="author">
+      <view class="note-top">
+        <view class="note-avatar">{{item.author[0]}}</view>
+        <text class="note-author">{{item.author}}</text>
+        <text class="note-tag">{{item.tag}}</text>
+      </view>
+      <text class="note-title">{{item.title}}</text>
+      <text class="note-text">{{item.text}}</text>
+    </view>
+    <text class="note-src">内容为博主公开笔记整理，票价与开放时间以官方为准</text>
+  </block>
+
+  <view class="dock">
+    <view class="dock-tool" bindtap="onBackForm" hover-class="tap-hover">
+      <text class="tool-glyph">←</text>
+      <text>重填</text>
+    </view>
+    <view class="dock-tool" bindtap="onRegenerate" hover-class="tap-hover">
+      <text class="tool-glyph">↻</text>
+      <text>换一版</text>
+    </view>
+    <view class="dock-btn {{saved ? 'saved' : ''}}" bindtap="onSave" hover-class="tap-hover">{{saved ? '已存入草案' : '存到我的行程'}}</view>
+  </view>
+</view>

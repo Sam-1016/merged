@@ -1,0 +1,620 @@
+/* 表单 */
+.form-title {
+  display: block;
+  margin-top: 10rpx;
+  font-size: 42rpx;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.field {
+  margin-top: 44rpx;
+}
+
+.field-label {
+  display: block;
+  margin-bottom: 18rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+}
+
+.picker-in {
+  height: 88rpx;
+  padding: 0 28rpx;
+  border-radius: 20rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 28rpx;
+}
+
+.seg {
+  display: flex;
+  padding: 6rpx;
+  border-radius: 999rpx;
+  background: var(--sand);
+}
+
+.seg-item {
+  flex: 1;
+  height: 68rpx;
+  border-radius: 999rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26rpx;
+  color: var(--muted);
+}
+
+.seg-item.on {
+  background: var(--pine);
+  color: #f6f1e8;
+  font-weight: 600;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.chip {
+  margin: 0 16rpx 16rpx 0;
+  padding: 14rpx 30rpx;
+  border-radius: 999rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  color: var(--muted);
+  font-size: 26rpx;
+}
+
+.chip.on {
+  background: var(--pine);
+  border-color: var(--pine);
+  color: #f6f1e8;
+}
+
+/* 生成中 */
+.loading {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-mark {
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: 34rpx;
+  background: var(--pine);
+  color: #f6f1e8;
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: breathe 1.2s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  50% { transform: scale(1.08); }
+}
+
+.loading-text {
+  margin-top: 32rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.loading-sub {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  color: var(--muted);
+}
+
+.dot-a, .dot-b, .dot-c {
+  animation: blink 1s steps(1) infinite;
+}
+.dot-b { animation-delay: 0.2s; }
+.dot-c { animation-delay: 0.4s; }
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* 结果 */
+.ticket {
+  margin-top: 16rpx;
+  padding: 32rpx;
+  border-radius: 28rpx;
+  background: var(--card);
+}
+
+.ticket-top,
+.ticket-metrics {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.kicker {
+  font-size: 22rpx;
+  letter-spacing: 3rpx;
+  color: var(--persimmon);
+}
+
+.status {
+  padding: 4rpx 12rpx;
+  border-radius: 999rpx;
+  background: var(--pine-soft);
+  color: var(--pine);
+  font-size: 20rpx;
+}
+
+.ticket-title {
+  display: block;
+  margin-top: 18rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.ticket-metrics {
+  margin-top: 28rpx;
+  justify-content: flex-start;
+}
+
+.ticket-metrics view {
+  margin-right: 40rpx;
+}
+
+.lbl {
+  font-size: 22rpx;
+  color: var(--muted);
+}
+
+.val {
+  display: block;
+  margin-top: 6rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.dash {
+  margin: 28rpx 0;
+  border-top: 2rpx dashed rgba(31, 26, 23, 0.16);
+}
+
+.stops {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.stop {
+  font-size: 26rpx;
+  font-weight: 600;
+}
+
+.stop-arrow {
+  margin: 0 10rpx;
+  color: var(--persimmon);
+}
+
+.summary {
+  display: block;
+  margin-top: 28rpx;
+  font-size: 26rpx;
+  line-height: 1.8;
+  color: #3a342e;
+}
+
+.day {
+  display: flex;
+  margin-bottom: 28rpx;
+}
+
+.day-no {
+  width: 72rpx;
+  flex: none;
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 36rpx;
+  color: var(--persimmon);
+}
+
+.day-body {
+  flex: 1;
+}
+
+.day-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.day-time,
+.day-desc {
+  display: block;
+}
+
+.day-time {
+  margin-top: 6rpx;
+  font-size: 22rpx;
+  color: var(--muted);
+}
+
+.day-desc {
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  line-height: 1.7;
+  color: #3a342e;
+}
+
+.place {
+  display: inline-block;
+  margin: 12rpx 12rpx 0 0;
+  padding: 8rpx 16rpx;
+  border-radius: 999rpx;
+  background: var(--sand);
+  color: var(--pine);
+  font-size: 22rpx;
+}
+
+.cost {
+  display: flex;
+  align-items: center;
+  margin-bottom: 18rpx;
+}
+
+.cost-name {
+  width: 140rpx;
+  flex: none;
+  font-size: 24rpx;
+  color: var(--muted);
+}
+
+.cost-track {
+  flex: 1;
+  height: 10rpx;
+  border-radius: 999rpx;
+  background: #e6e0d8;
+  overflow: hidden;
+}
+
+.cost-fill {
+  height: 100%;
+  background: var(--pine);
+}
+
+.cost-val {
+  width: 120rpx;
+  text-align: right;
+  font-size: 24rpx;
+  font-weight: 600;
+}
+
+.budget-line {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: var(--muted);
+}
+
+.stay {
+  display: block;
+  font-size: 26rpx;
+  line-height: 1.8;
+  color: #3a342e;
+}
+
+.tip {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.tip-no {
+  width: 56rpx;
+  flex: none;
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 30rpx;
+  color: var(--persimmon);
+}
+
+.tip-text {
+  flex: 1;
+  font-size: 26rpx;
+  line-height: 1.7;
+}
+
+/* 交通段 */
+.legs {
+  margin-top: 20rpx;
+}
+
+.leg {
+  display: flex;
+  align-items: stretch;
+}
+
+.leg-rail {
+  width: 28rpx;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.leg-dot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  margin-top: 10rpx;
+  flex: none;
+}
+
+.leg-dot.walk { background: var(--pine); }
+.leg-dot.bus { background: var(--persimmon); }
+.leg-dot.taxi { background: #8a7f5c; }
+
+.leg-line {
+  width: 2rpx;
+  flex: 1;
+  margin: 4rpx 0;
+  background: var(--line);
+}
+
+.leg-text {
+  flex: 1;
+  padding: 4rpx 0 18rpx 14rpx;
+  font-size: 23rpx;
+  line-height: 1.6;
+  color: #3a342e;
+}
+
+/* 景点明细 */
+.spot-detail {
+  margin-top: 14rpx;
+  padding: 18rpx 22rpx;
+  border-radius: 18rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+}
+
+.spot-detail-name {
+  display: block;
+  font-size: 26rpx;
+  font-weight: 600;
+}
+
+.spot-detail-meta {
+  display: block;
+  margin-top: 6rpx;
+  font-size: 22rpx;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.ticket-sum {
+  display: block;
+  margin-top: 14rpx;
+  font-size: 23rpx;
+  color: var(--persimmon);
+}
+
+/* 博主推荐 */
+.note {
+  margin-bottom: 22rpx;
+  padding: 26rpx 28rpx;
+  border-radius: 24rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+}
+
+.note-top {
+  display: flex;
+  align-items: center;
+}
+
+.note-avatar {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  background: var(--pine-soft);
+  color: var(--pine);
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.note-author {
+  margin-left: 14rpx;
+  font-size: 24rpx;
+  color: var(--muted);
+  flex: 1;
+}
+
+.note-tag {
+  padding: 4rpx 14rpx;
+  border-radius: 999rpx;
+  background: var(--sand);
+  color: var(--persimmon);
+  font-size: 20rpx;
+  flex: none;
+}
+
+.note-title {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.note-text {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 25rpx;
+  line-height: 1.8;
+  color: #3a342e;
+}
+
+.note-src {
+  display: block;
+  margin: 4rpx 0 10rpx;
+  font-size: 20rpx;
+  color: var(--faint);
+}
+
+.dock-btn.saved {
+  background: var(--sand);
+  color: var(--pine);
+}
+
+/* 预算区间输入 */
+.range {
+  display: flex;
+  align-items: center;
+}
+
+.range-in {
+  flex: 1;
+  height: 88rpx;
+  padding: 0 24rpx;
+  border-radius: 20rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  font-size: 28rpx;
+}
+
+.range-sep {
+  margin: 0 18rpx;
+  color: var(--muted);
+  font-size: 30rpx;
+}
+
+.field-hint {
+  display: block;
+  margin-top: 12rpx;
+  font-size: 22rpx;
+  color: var(--faint);
+}
+
+/* 大交通站点 */
+.station {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 18rpx;
+  padding: 22rpx 24rpx;
+  border-radius: 20rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+}
+
+.station-kind {
+  flex: none;
+  padding: 6rpx 16rpx;
+  border-radius: 999rpx;
+  background: var(--pine);
+  color: #f6f1e8;
+  font-size: 20rpx;
+}
+
+.station-body {
+  flex: 1;
+  min-width: 0;
+  margin-left: 18rpx;
+}
+
+.station-name {
+  display: block;
+  font-size: 27rpx;
+  font-weight: 600;
+}
+
+.station-desc {
+  display: block;
+  margin-top: 6rpx;
+  font-size: 23rpx;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* 附近美食卡片 */
+.food-card {
+  display: flex;
+  margin-top: 14rpx;
+  padding: 16rpx;
+  border-radius: 20rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+}
+
+/* 经典美食（无图） */
+.classic {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.classic-no {
+  width: 56rpx;
+  flex: none;
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 30rpx;
+  color: var(--persimmon);
+}
+
+.classic-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.classic-name {
+  display: block;
+  font-size: 27rpx;
+  font-weight: 600;
+}
+
+.classic-desc {
+  display: block;
+  margin-top: 4rpx;
+  font-size: 24rpx;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.food-img {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 14rpx;
+  flex: none;
+  background: var(--sand);
+}
+
+.food-body {
+  flex: 1;
+  min-width: 0;
+  margin-left: 18rpx;
+}
+
+.food-title {
+  display: block;
+  font-size: 26rpx;
+  font-weight: 600;
+}
+
+.food-sub {
+  display: block;
+  margin-top: 4rpx;
+  font-size: 20rpx;
+  color: var(--persimmon);
+}
+
+.food-desc {
+  display: block;
+  margin-top: 6rpx;
+  font-size: 22rpx;
+  color: var(--muted);
+  line-height: 1.6;
+}
