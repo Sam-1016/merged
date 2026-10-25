@@ -1,0 +1,78 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/guides/guides",
+    "pages/destinations/destinations",
+    "pages/mine/mine",
+    "pages/guide-detail/guide-detail",
+    "pages/destination-detail/destination-detail",
+    "pages/search/search",
+    "pages/favorites/favorites",
+    "pages/history/history",
+    "pages/itinerary/itinerary",
+    "pages/settings/settings",
+    "pages/about/about",
+    "pages/profile/profile",
+    "pages/ai-guide/ai-guide",
+    "pages/ai-plan/ai-plan",
+    "pages/guide-list/guide-list",
+    "pages/guide-create/guide-create",
+    "pages/community/community",
+    "pages/publish/publish",
+    "pages/community-detail/community-detail",
+    "pages/admin/admin",
+    "pages/login/login"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#EFEAE2",
+    "navigationBarTitleText": "漫途",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#EFEAE2",
+    "backgroundColorTop": "#EFEAE2",
+    "backgroundColorBottom": "#EFEAE2",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#9A9188",
+    "selectedColor": "#1F4D3A",
+    "backgroundColor": "#FBF9F6",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tab/home.png",
+        "selectedIconPath": "images/tab/home-on.png"
+      },
+      {
+        "pagePath": "pages/community/community",
+        "text": "社区",
+        "iconPath": "images/tab/community.png",
+        "selectedIconPath": "images/tab/community-on.png"
+      },
+      {
+        "pagePath": "pages/guides/guides",
+        "text": "攻略",
+        "iconPath": "images/tab/guide.png",
+        "selectedIconPath": "images/tab/guide-on.png"
+      },
+      {
+        "pagePath": "pages/destinations/destinations",
+        "text": "目的地",
+        "iconPath": "images/tab/dest.png",
+        "selectedIconPath": "images/tab/dest-on.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "images/tab/mine.png",
+        "selectedIconPath": "images/tab/mine-on.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "networkTimeout": {
+    "request": 120000
+  }
+}
