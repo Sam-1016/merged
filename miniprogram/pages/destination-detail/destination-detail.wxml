@@ -1,0 +1,147 @@
+<nav-bar title="{{dest.name || '目的地'}}" solid="{{!dest || navSolid}}" theme="{{!dest || navSolid ? 'dark' : 'light'}}" placeholder="{{!dest}}" />
+
+<block wx:if="{{ready && dest}}">
+  <view class="cover">
+    <image src="{{dest.cover}}" mode="aspectFill" />
+    <view class="cover-mask"></view>
+    <view class="cover-copy">
+      <text class="cover-place">{{dest.area}} · {{dest.group}}</text>
+      <text class="cover-name">{{dest.name}}</text>
+    </view>
+  </view>
+
+  <view class="sheet has-dock">
+    <text class="slogan">{{dest.slogan}}</text>
+
+    <view class="stats">
+      <view class="stat">
+        <text class="stat-n">{{dest.guideCount}}</text>
+        <text class="stat-l">篇攻略</text>
+      </view>
+      <view class="stat">
+        <text class="stat-n">{{dest.daysText}}</text>
+        <text class="stat-l">建议天数</text>
+      </view>
+      <view class="stat">
+        <text class="stat-n">{{dest.budgetText}}</text>
+        <text class="stat-l">人均</text>
+      </view>
+      <view class="stat">
+        <text class="stat-n">{{dest.temp}}</text>
+        <text class="stat-l">体感</text>
+      </view>
+    </view>
+
+    <view class="months">
+      <text class="month-label">适宜</text>
+      <text class="tag" wx:for="{{dest.best}}" wx:key="*this">{{item}}</text>
+    </view>
+
+    <text class="intro">{{dest.intro}}</text>
+
+    <text class="block-title">会记得的地方</text>
+    <scroll-view class="spots" scroll-x show-scrollbar="{{false}}">
+      <view class="spot" wx:for="{{dest.highlights}}" wx:key="name" style="margin-right: {{index === dest.highlights.length - 1 ? '4rpx' : '16rpx'}};">
+        <image src="{{item.image}}" mode="aspectFill" />
+        <text class="spot-name">{{item.name}}</text>
+        <text class="spot-desc">{{item.desc}}</text>
+        <text class="spot-meta" wx:if="{{item.meta}}">{{item.meta.ticket}} · {{item.meta.suggest}}</text>
+      </view>
+    </scroll-view>
+
+    <text class="block-title">怎么安排</text>
+    <view class="play" wx:for="{{dest.plays}}" wx:key="title">
+      <text class="play-no">0{{index + 1}}</text>
+      <view>
+        <text class="play-title">{{item.title}}</text>
+        <text class="play-desc">{{item.desc}}</text>
+      </view>
+    </view>
+
+    <text class="block-title">吃什么</text>
+    <view class="food" wx:for="{{dest.foods}}" wx:key="name">
+      <text class="food-no">0{{index + 1}}</text>
+      <view>
+        <text class="food-name">{{item.name}}</text>
+        <text class="food-desc">{{item.desc}}</text>
+      </view>
+    </view>
+
+    <block wx:if="{{spotFoods.length}}">
+      <text class="block-title">景点附近吃什么</text>
+      <view class="food-card" wx:for="{{spotFoods}}" wx:key="name">
+        <image class="food-img" src="{{item.image}}" mode="aspectFill" lazy-load />
+        <view class="food-card-body">
+          <text class="food-card-title">{{item.name}}</text>
+          <text class="food-card-sub">{{item.spot}}附近</text>
+          <text class="food-card-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </block>
+
+    <block wx:if="{{stations.length}}">
+      <text class="block-title">大交通怎么到</text>
+      <view class="station" wx:for="{{stations}}" wx:key="name">
+        <view class="station-kind">{{item.kind}}</view>
+        <view class="station-body">
+          <text class="station-name">{{item.name}}</text>
+          <text class="station-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </block>
+
+    <view class="stay">
+      <text class="stay-kicker">住</text>
+      <text class="stay-text">{{dest.stay}}</text>
+    </view>
+
+    <view class="ai-banner" bindtap="onAiGuide" hover-class="tap-hover">
+      <view class="ai-badge">AI</view>
+      <view class="ai-banner-body">
+        <text class="ai-banner-title">让 AI 讲讲这座城</text>
+        <text class="ai-banner-sub">总览 · 路线 · 美食 · 住宿 · 避坑</text>
+      </view>
+      <view class="arrow light"></view>
+    </view>
+
+    <block wx:if="{{notes.length}}">
+      <text class="block-title">博主怎么说</text>
+      <view class="note" wx:for="{{notes}}" wx:key="author">
+        <view class="note-top">
+          <view class="note-avatar">{{item.author[0]}}</view>
+          <text class="note-author">{{item.author}}</text>
+          <text class="note-tag">{{item.tag}}</text>
+        </view>
+        <text class="note-title">{{item.title}}</text>
+        <text class="note-text">{{item.text}}</text>
+      </view>
+      <text class="note-src">内容为博主公开笔记整理，票价与开放时间以官方为准</text>
+    </block>
+
+    <text class="block-title">相关攻略</text>
+    <block wx:if="{{guides.length}}">
+      <view class="g-row" wx:for="{{guides}}" wx:key="id" data-id="{{item.id}}" bindtap="onGuide" hover-class="tap-hover">
+        <image class="g-cover" src="{{item.cover}}" mode="aspectFill" lazy-load />
+        <view class="g-body">
+          <text class="g-cat">{{item.category}}</text>
+          <text class="g-title two-line">{{item.title}}</text>
+          <text class="g-meta">{{item.days}}天 · {{item.reads}}阅读</text>
+        </view>
+      </view>
+    </block>
+    <view class="quiet" wx:else>这篇目的地的长线攻略还在编排。</view>
+  </view>
+
+  <view class="dock">
+    <view class="dock-note">共 {{guides.length}} 篇</view>
+    <view class="dock-btn" bindtap="onStart">{{guides.length ? '打开第一篇攻略' : '攻略正在整理'}}</view>
+  </view>
+</block>
+
+<view wx:if="{{ready && !dest}}" class="missing">
+  <view class="empty">
+    <view class="empty-mark">途</view>
+    <text class="empty-title">没有找到这个目的地</text>
+    <view class="btn" bindtap="goDests">回目的地</view>
+  </view>
+</view>

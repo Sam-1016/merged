@@ -1,0 +1,163 @@
+<nav-bar title="{{guide.title || '攻略'}}" solid="{{!guide || navSolid}}" theme="{{!guide || navSolid ? 'dark' : 'light'}}" placeholder="{{!guide}}" />
+
+<block wx:if="{{ready && guide}}">
+  <view class="cover">
+    <image src="{{guide.cover}}" mode="aspectFill" />
+    <view class="cover-mask"></view>
+    <view class="cover-copy">
+      <text class="cover-city">{{guide.city}}</text>
+      <text class="cover-meta">{{guide.category}} · {{guide.days}}天</text>
+    </view>
+  </view>
+
+  <view class="sheet has-dock">
+    <view class="title-row">
+      <text class="sheet-kicker">更新于 {{guide.updated}}</text>
+      <text class="city-link" bindtap="onDest">{{guide.city}}</text>
+    </view>
+    <text class="sheet-title">{{guide.title}}</text>
+    <text class="excerpt">{{guide.excerpt}}</text>
+
+    <view class="author">
+      <image class="author-avatar" src="{{guide.avatar}}" mode="aspectFill" />
+      <view class="author-body">
+        <text class="author-name">{{guide.author}}</text>
+        <text class="author-title">{{guide.authorTitle}}</text>
+      </view>
+      <view class="follow {{followed ? 'on' : ''}}" bindtap="onFollow">{{followed ? '已关注' : '关注'}}</view>
+    </view>
+
+    <view class="stat-line">
+      <text>{{guide.reads}} 阅读</text>
+      <text class="dot">·</text>
+      <text>{{guide.likes}} 收藏</text>
+      <text class="dot">·</text>
+      <text>{{guide.budgetText}}</text>
+    </view>
+
+    <view class="info-grid">
+      <view class="info" wx:for="{{guide.infos}}" wx:key="label">
+        <text class="info-label">{{item.label}}</text>
+        <text class="info-value">{{item.value}}</text>
+      </view>
+    </view>
+
+    <view class="tags">
+      <text class="tag" wx:for="{{guide.tags}}" wx:key="*this">{{item}}</text>
+    </view>
+
+    <view class="ai-banner" bindtap="onAiGuide" hover-class="tap-hover">
+      <view class="ai-badge">AI</view>
+      <view class="ai-banner-body">
+        <text class="ai-banner-title">让 AI 把这篇攻略讲给你听</text>
+        <text class="ai-banner-sub">路线怎么走 · 吃什么 · 住哪里 · 避坑</text>
+      </view>
+      <view class="arrow light"></view>
+    </view>
+
+    <view class="anchors" style="top: {{navBarHeight}}px;">
+      <text data-target="sec-route" bindtap="onAnchor">路线</text>
+      <text data-target="sec-story" bindtap="onAnchor">正文</text>
+      <text data-target="sec-cost" bindtap="onAnchor">花费</text>
+      <text data-target="sec-tips" bindtap="onAnchor">贴士</text>
+    </view>
+
+    <view id="sec-route">
+      <text class="block-title">怎么走</text>
+      <view class="route-box">{{guide.route}}</view>
+      <view class="tl">
+        <view class="tl-item" wx:for="{{guide.daysPlan}}" wx:key="day">
+          <view class="tl-rail">
+            <view class="tl-dot"></view>
+            <view class="tl-line" wx:if="{{index < guide.daysPlan.length - 1}}"></view>
+          </view>
+          <view class="tl-body">
+            <text class="tl-day">DAY {{item.day}}</text>
+            <text class="tl-title">{{item.title}}</text>
+            <text class="tl-time">{{item.time}}</text>
+            <text class="tl-desc">{{item.desc}}</text>
+            <view class="places">
+              <text class="place" wx:for="{{item.places}}" wx:for-item="place" wx:key="*this">{{place}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view id="sec-story">
+      <text class="block-title">这篇在说</text>
+      <text class="para" wx:for="{{guide.paragraphs}}" wx:key="*this">{{item}}</text>
+    </view>
+
+    <text class="block-title">会停下来的地方</text>
+    <scroll-view class="spots" scroll-x show-scrollbar="{{false}}">
+      <view class="spot" wx:for="{{guide.spots}}" wx:key="name" style="margin-right: {{index === guide.spots.length - 1 ? '4rpx' : '16rpx'}};">
+        <image src="{{item.image}}" mode="aspectFill" />
+        <text class="spot-name">{{item.name}}</text>
+        <text class="spot-desc">{{item.desc}}</text>
+      </view>
+    </scroll-view>
+
+    <view id="sec-cost">
+      <text class="block-title">花费大概这样分</text>
+      <view class="cost" wx:for="{{guide.costs}}" wx:key="name">
+        <text class="cost-name">{{item.name}}</text>
+        <view class="cost-track">
+          <view class="cost-fill" style="width: {{item.percent}}%;"></view>
+        </view>
+        <text class="cost-val">{{item.value}}</text>
+      </view>
+      <view class="budget">人均 {{guide.budgetText}}，按 {{guide.days}} 天估算</view>
+    </view>
+
+    <view id="sec-tips">
+      <text class="block-title">出发前看一眼</text>
+      <view class="tip" wx:for="{{guide.tips}}" wx:key="*this">
+        <text class="tip-no">0{{index + 1}}</text>
+        <text class="tip-text">{{item}}</text>
+      </view>
+    </view>
+
+    <text class="block-title">读者补充</text>
+    <view class="note" wx:for="{{guide.notes}}" wx:key="name">
+      <image class="note-avatar" src="{{item.avatar}}" mode="aspectFill" />
+      <view class="note-body">
+        <text class="note-name">{{item.name}}</text>
+        <text class="note-text">{{item.text}}</text>
+      </view>
+    </view>
+
+    <block wx:if="{{related.length}}">
+      <text class="block-title">接着可以看</text>
+      <view class="g-row" wx:for="{{related}}" wx:key="id" data-id="{{item.id}}" bindtap="onGuide" hover-class="tap-hover">
+        <image class="g-cover" src="{{item.cover}}" mode="aspectFill" lazy-load />
+        <view class="g-body">
+          <text class="g-cat">{{item.category}} · {{item.city}}</text>
+          <text class="g-title two-line">{{item.title}}</text>
+          <text class="g-meta">{{item.days}}天 · {{item.reads}}阅读</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class="dock">
+    <view class="dock-tool {{fav ? 'on' : ''}}" bindtap="onFav">
+      <text class="tool-glyph">{{fav ? '♥' : '♡'}}</text>
+      <text>{{fav ? '已收藏' : '收藏'}}</text>
+    </view>
+    <button class="dock-tool" open-type="share">
+      <text class="tool-glyph">↗</text>
+      <text>分享</text>
+    </button>
+    <view class="dock-btn" bindtap="onPlan">按这篇走</view>
+  </view>
+</block>
+
+<view class="missing" wx:if="{{ready && !guide}}">
+  <view class="empty">
+    <view class="empty-mark">?</view>
+    <text class="empty-title">没有找到这篇攻略</text>
+    <text class="empty-desc">它可能还没被写进这一期。</text>
+    <view class="btn" bindtap="goGuides">回攻略页</view>
+  </view>
+</view>

@@ -1,0 +1,57 @@
+<nav-bar solid="{{true}}" theme="dark" align="left" title="">
+  <view class="nav-search">
+    <view class="s-ico">
+      <view class="s-ring"></view>
+      <view class="s-bar"></view>
+    </view>
+    <input class="nav-input" value="{{keyword}}" placeholder="搜索城市、攻略或季节" placeholder-class="ph" bindinput="onInput" confirm-type="search" />
+    <text wx:if="{{keyword}}" class="nav-clear" bindtap="onClear">清除</text>
+  </view>
+</nav-bar>
+
+<view class="pad-page" wx:if="{{!searched}}">
+  <view class="block">
+    <text class="label">最近在找</text>
+    <view class="words">
+      <text class="word" wx:for="{{recent}}" wx:key="*this" data-word="{{item}}" bindtap="onWord">{{item}}</text>
+    </view>
+  </view>
+  <view class="block">
+    <text class="label">大家在看</text>
+    <view class="words">
+      <text class="word hot" wx:for="{{hotWords}}" wx:key="*this" data-word="{{item}}" bindtap="onWord">{{item}}</text>
+    </view>
+  </view>
+  <view class="hint">试试「大理」「火锅」或「极光」</view>
+</view>
+
+<view class="pad-page" wx:else>
+  <view wx:if="{{destinations.length}}">
+    <text class="label">目的地</text>
+    <view class="dest-hit" wx:for="{{destinations}}" wx:key="id" data-id="{{item.id}}" bindtap="onDest" hover-class="tap-hover">
+      <image src="{{item.cover}}" mode="aspectFill" />
+      <view>
+        <text class="hit-name">{{item.name}}</text>
+        <text class="hit-sub">{{item.area}} · {{item.slogan}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{guides.length}}" class="guide-block">
+    <text class="label">攻略</text>
+    <view class="g-row" wx:for="{{guides}}" wx:key="id" data-id="{{item.id}}" bindtap="onGuide" hover-class="tap-hover">
+      <image class="g-cover" src="{{item.cover}}" mode="aspectFill" />
+      <view class="g-body">
+        <text class="g-cat">{{item.category}} · {{item.city}}</text>
+        <text class="g-title two-line">{{item.title}}</text>
+        <text class="g-meta">{{item.days}}天 · {{item.reads}}阅读</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{!guides.length && !destinations.length}}">
+    <view class="empty-mark">寻</view>
+    <text class="empty-title">没有找到「{{keyword}}」</text>
+    <text class="empty-desc">换成城市、季节，或者一个想吃的东西。</text>
+  </view>
+</view>

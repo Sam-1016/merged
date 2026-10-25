@@ -1,0 +1,414 @@
+.cover {
+  position: relative;
+  height: 640rpx;
+}
+
+.cover image {
+  width: 100%;
+  height: 640rpx;
+}
+
+.cover-mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 300rpx;
+  background: linear-gradient(180deg, rgba(20, 14, 10, 0), rgba(20, 14, 10, 0.7));
+}
+
+.cover-copy {
+  position: absolute;
+  left: 32rpx;
+  bottom: 72rpx;
+  color: #f7f3ed;
+}
+
+.cover-place {
+  display: block;
+  font-size: 24rpx;
+  letter-spacing: 3rpx;
+}
+
+.cover-name {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 64rpx;
+  font-weight: 600;
+  letter-spacing: 4rpx;
+}
+
+.sheet {
+  position: relative;
+  margin-top: -40rpx;
+  padding: 40rpx 32rpx 24rpx;
+  border-radius: 36rpx 36rpx 0 0;
+  background: var(--bg);
+}
+
+.slogan {
+  display: block;
+  font-size: 32rpx;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.stats {
+  display: flex;
+  margin-top: 28rpx;
+  padding: 24rpx 0;
+  border-top: 1rpx solid var(--line);
+  border-bottom: 1rpx solid var(--line);
+}
+
+.stat {
+  flex: 1;
+  text-align: center;
+}
+
+.stat-n {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.stat-l {
+  display: block;
+  margin-top: 6rpx;
+  font-size: 20rpx;
+  color: var(--muted);
+}
+
+.months {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 24rpx;
+}
+
+.month-label {
+  margin-right: 12rpx;
+  margin-bottom: 12rpx;
+  font-size: 22rpx;
+  color: var(--muted);
+}
+
+.intro {
+  display: block;
+  margin-top: 12rpx;
+  font-size: 28rpx;
+  line-height: 1.85;
+  color: #3a342e;
+}
+
+.spots {
+  width: 686rpx;
+  height: 340rpx;
+  white-space: nowrap;
+}
+
+.spot {
+  display: inline-block;
+  width: 280rpx;
+  white-space: normal;
+  vertical-align: top;
+}
+
+.spot image {
+  width: 280rpx;
+  height: 200rpx;
+  border-radius: 20rpx;
+}
+
+.spot-name {
+  display: block;
+  margin-top: 12rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.spot-desc {
+  display: block;
+  margin-top: 6rpx;
+  font-size: 22rpx;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.play,
+.food {
+  display: flex;
+  padding: 8rpx 0 22rpx;
+}
+
+.play-no,
+.food-no {
+  width: 56rpx;
+  flex: none;
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  color: var(--persimmon);
+  font-size: 28rpx;
+}
+
+.play-title,
+.food-name {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.play-desc,
+.food-desc {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 26rpx;
+  line-height: 1.7;
+  color: #3a342e;
+}
+
+.play {
+  margin-bottom: 8rpx;
+  padding-left: 18rpx;
+  border-left: 4rpx solid var(--pine);
+}
+
+.stay {
+  margin-top: 12rpx;
+  padding: 28rpx;
+  border-radius: 24rpx;
+  background: var(--sand);
+}
+
+.stay-kicker {
+  display: block;
+  font-size: 22rpx;
+  letter-spacing: 4rpx;
+  color: var(--persimmon);
+}
+
+.stay-text {
+  display: block;
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  line-height: 1.7;
+}
+
+.quiet {
+  font-size: 26rpx;
+  color: var(--muted);
+}
+
+.dock-note {
+  width: 140rpx;
+  flex: none;
+  font-size: 24rpx;
+  color: var(--muted);
+}
+
+.missing {
+  padding-top: 80rpx;
+}
+
+.ai-banner {
+  margin-top: 36rpx;
+  padding: 26rpx 28rpx;
+  border-radius: 24rpx;
+  background: var(--pine);
+  display: flex;
+  align-items: center;
+}
+
+.ai-badge {
+  width: 68rpx;
+  height: 68rpx;
+  border-radius: 20rpx;
+  background: rgba(246, 241, 232, 0.16);
+  color: #f6f1e8;
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.ai-banner-body {
+  flex: 1;
+  min-width: 0;
+  margin-left: 20rpx;
+}
+
+.ai-banner-title {
+  display: block;
+  color: #f6f1e8;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.ai-banner-sub {
+  display: block;
+  margin-top: 6rpx;
+  color: rgba(246, 241, 232, 0.62);
+  font-size: 22rpx;
+}
+
+.arrow.light {
+  border-color: rgba(246, 241, 232, 0.6);
+}
+
+.spot-meta {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 20rpx;
+  color: var(--persimmon);
+}
+
+/* 博主推荐 */
+.note {
+  margin-bottom: 22rpx;
+  padding: 26rpx 28rpx;
+  border-radius: 24rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+}
+
+.note-top {
+  display: flex;
+  align-items: center;
+}
+
+.note-avatar {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  background: var(--pine-soft);
+  color: var(--pine);
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.note-author {
+  margin-left: 14rpx;
+  font-size: 24rpx;
+  color: var(--muted);
+  flex: 1;
+}
+
+.note-tag {
+  padding: 4rpx 14rpx;
+  border-radius: 999rpx;
+  background: var(--sand);
+  color: var(--persimmon);
+  font-size: 20rpx;
+  flex: none;
+}
+
+.note-title {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.note-text {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 25rpx;
+  line-height: 1.8;
+  color: #3a342e;
+}
+
+.note-src {
+  display: block;
+  margin: 4rpx 0 10rpx;
+  font-size: 20rpx;
+  color: var(--faint);
+}
+
+/* 大交通站点 */
+.station {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 18rpx;
+  padding: 22rpx 24rpx;
+  border-radius: 20rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+}
+
+.station-kind {
+  flex: none;
+  padding: 6rpx 16rpx;
+  border-radius: 999rpx;
+  background: var(--pine);
+  color: #f6f1e8;
+  font-size: 20rpx;
+}
+
+.station-body {
+  flex: 1;
+  min-width: 0;
+  margin-left: 18rpx;
+}
+
+.station-name {
+  display: block;
+  font-size: 27rpx;
+  font-weight: 600;
+}
+
+.station-desc {
+  display: block;
+  margin-top: 6rpx;
+  font-size: 23rpx;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* 附近美食卡片 */
+.food-card {
+  display: flex;
+  margin-bottom: 18rpx;
+  padding: 16rpx;
+  border-radius: 20rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+}
+
+.food-img {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 14rpx;
+  flex: none;
+  background: var(--sand);
+}
+
+.food-card-body {
+  flex: 1;
+  min-width: 0;
+  margin-left: 18rpx;
+}
+
+.food-card-title {
+  display: block;
+  font-size: 27rpx;
+  font-weight: 600;
+}
+
+.food-card-sub {
+  display: block;
+  margin-top: 4rpx;
+  font-size: 20rpx;
+  color: var(--persimmon);
+}
+
+.food-card-desc {
+  display: block;
+  margin-top: 6rpx;
+  font-size: 22rpx;
+  color: var(--muted);
+  line-height: 1.6;
+}
