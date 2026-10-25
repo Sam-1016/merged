@@ -1,0 +1,24 @@
+{
+  "name": "mantu-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "漫途 · AI 文旅攻略共创社区 —— 本地后端服务（基于 Node.js 原生模块，零第三方依赖）",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "keywords": [
+    "wechat-miniprogram",
+    "ollama",
+    "deepseek-r1",
+    "travel-guide",
+    "ai"
+  ],
+  "license": "MIT"
+}
