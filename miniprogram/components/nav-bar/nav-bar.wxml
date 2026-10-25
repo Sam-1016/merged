@@ -1,0 +1,13 @@
+<view class="nav {{solid ? 'is-solid' : ''}}" style="padding-top: {{statusBarHeight}}px;">
+  <view class="bar">
+    <view class="back {{theme}}" bindtap="onBack">
+      <view class="chevron"></view>
+    </view>
+    <view class="center {{align}}">
+      <text wx:if="{{title}}" class="title" style="opacity: {{solid ? 1 : 0}};">{{title}}</text>
+      <slot></slot>
+    </view>
+    <view class="spacer"></view>
+  </view>
+</view>
+<view wx:if="{{placeholder}}" style="height: {{statusBarHeight + 44}}px;"></view>
