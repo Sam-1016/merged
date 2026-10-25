@@ -7,8 +7,9 @@
  *   调用微信官方接口 wxacode.getUnlimited 生成小程序码，
  *   供评委扫码直接进入小程序首页。
  * 用法：
- *   APPID=wx... APPSECRET=... node tools/gen-qrcode.js
- *   或 node tools/gen-qrcode.js --appid wx... --secret ...
+ *   node tools/gen-qrcode.js --appid wx... --secret ... --env trial
+ *   或 APPID=wx... APPSECRET=... ENV=trial node tools/gen-qrcode.js
+ *   --env 可选 release（默认，正式版）/ trial（体验版）/ develop（开发版）
  * 产物：
  *   docs/qrcode.png
  * 前置条件：
@@ -25,10 +26,11 @@ const path = require('path')
 /* ---------------- 参数解析：支持环境变量与命令行两种方式 ---------------- */
 function parseArgs() {
   const args = process.argv.slice(2)
-  const out = { appid: process.env.APPID || '', secret: process.env.APPSECRET || '' }
+  const out = { appid: process.env.APPID || '', secret: process.env.APPSECRET || '', env: process.env.ENV || 'release' }
   for (let i = 0; i < args.length; i += 1) {
     if (args[i] === '--appid') out.appid = args[i + 1]
     if (args[i] === '--secret') out.secret = args[i + 1]
+    if (args[i] === '--env') out.env = args[i + 1]
   }
   return out
 }
@@ -66,11 +68,11 @@ function request(url, method, body) {
 
 /* ---------------- 主流程：取 access_token -> 生成小程序码 -> 落盘 ---------------- */
 async function main() {
-  const { appid, secret } = parseArgs()
+  const { appid, secret, env } = parseArgs()
   if (!appid || !secret) {
     console.error('缺少参数。用法：')
-    console.error('  APPID=wx... APPSECRET=... node tools/gen-qrcode.js')
-    console.error('  node tools/gen-qrcode.js --appid wx... --secret ...')
+    console.error('  node tools/gen-qrcode.js --appid wx... --secret ... --env trial')
+    console.error('  APPID=wx... APPSECRET=... ENV=trial node tools/gen-qrcode.js')
     process.exit(1)
   }
 
@@ -92,7 +94,7 @@ async function main() {
     scene: 'judge',
     page: 'pages/index/index',
     check_path: false,
-    env_version: 'release',
+    env_version: env,
     width: 430
   })
 
