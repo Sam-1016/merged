@@ -1,0 +1,190 @@
+/* ============================================================
+   攻略管理后台页样式（小程序原生 WXSS，复用 app.wxss 全局变量）
+   ============================================================ */
+.page {
+  min-height: 100vh;
+  padding: 24rpx 32rpx;
+  padding-bottom: calc(80rpx + constant(safe-area-inset-bottom));
+  padding-bottom: calc(80rpx + env(safe-area-inset-bottom));
+}
+
+/* 后台连接状态条 */
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 28rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  border: 1rpx solid var(--line);
+}
+
+.status-on {
+  background: var(--pine-soft);
+  color: var(--pine);
+}
+
+.status-off {
+  background: var(--card);
+  color: var(--faint);
+}
+
+.status-left {
+  display: flex;
+  align-items: center;
+}
+
+.dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  margin-right: 14rpx;
+  background: currentColor;
+}
+
+.status-refresh {
+  font-size: 24rpx;
+  color: var(--pine);
+  padding: 4rpx 16rpx;
+}
+
+/* 管理操作区 */
+.ops {
+  margin-top: 28rpx;
+  padding: 28rpx;
+  border-radius: 28rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ops-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.ops-title {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.ops-desc {
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  color: var(--faint);
+}
+
+.ops-btn {
+  flex-shrink: 0;
+  margin-left: 24rpx;
+  padding: 14rpx 28rpx;
+  border-radius: 999rpx;
+  background: var(--pine);
+  color: #f6f1e8;
+  font-size: 24rpx;
+}
+
+.btn-hover {
+  opacity: 0.85;
+}
+
+/* 攻略卡片 */
+.cards {
+  margin-top: 28rpx;
+}
+
+.c-card {
+  margin-bottom: 24rpx;
+  padding: 28rpx 30rpx;
+  border-radius: 28rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  display: flex;
+  align-items: center;
+}
+
+.c-card-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.c-card-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.c-card-meta {
+  margin-top: 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.c-dest {
+  font-size: 24rpx;
+  color: var(--persimmon);
+}
+
+.c-time {
+  font-size: 22rpx;
+  color: var(--faint);
+}
+
+.c-card-tags {
+  margin-top: 14rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.a-tag {
+  margin: 0 12rpx 12rpx 0;
+  padding: 6rpx 18rpx;
+  border-radius: 999rpx;
+  background: var(--pine-soft);
+  color: var(--pine);
+  font-size: 22rpx;
+}
+
+.a-tag-ai {
+  background: rgba(179, 64, 42, 0.12);
+  color: var(--persimmon);
+}
+
+/* 删除按钮 */
+.c-del {
+  flex-shrink: 0;
+  margin-left: 24rpx;
+  padding: 12rpx 26rpx;
+  border-radius: 999rpx;
+  border: 1rpx solid rgba(179, 64, 42, 0.45);
+  color: var(--persimmon);
+  font-size: 24rpx;
+}
+
+.del-hover {
+  background: rgba(179, 64, 42, 0.12);
+}
+
+.tap-hover {
+  opacity: 0.7;
+}
+
+/* 空状态 */
+.empty {
+  margin-top: 120rpx;
+  text-align: center;
+}
+
+.empty-title {
+  font-size: 30rpx;
+  color: var(--muted);
+}
+
+.empty-tip {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  color: var(--faint);
+}

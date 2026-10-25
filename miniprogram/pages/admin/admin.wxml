@@ -1,0 +1,43 @@
+<view class="page">
+  <!-- 后台连接状态条 -->
+  <view class="status {{online ? 'status-on' : 'status-off'}}">
+    <view class="status-left">
+      <view class="dot"></view>
+      <text class="status-text">{{online ? '已连接本地后台 · 127.0.0.1:3000' : '后台未连接 · 展示本地缓存数据'}}</text>
+    </view>
+    <text class="status-refresh" bindtap="onRefresh" hover-class="tap-hover">刷新</text>
+  </view>
+
+  <!-- 管理操作区 -->
+  <view class="ops">
+    <view class="ops-info">
+      <text class="ops-title">社区攻略管理</text>
+      <text class="ops-desc">共 {{total}} 条攻略，删除后广场页同步生效</text>
+    </view>
+    <view class="ops-btn" bindtap="onReset" hover-class="btn-hover">重置演示数据</view>
+  </view>
+
+  <!-- 攻略列表 -->
+  <view class="cards">
+    <view class="c-card" wx:for="{{guides}}" wx:key="id">
+      <view class="c-card-main" data-id="{{item.id}}" bindtap="onCard" hover-class="tap-hover">
+        <view class="c-card-title">{{item.title}}</view>
+        <view class="c-card-meta">
+          <text class="c-dest">{{item.destination}}</text>
+          <text class="c-time">{{item.author || '匿名'}} · {{item.timeLabel}}</text>
+        </view>
+        <view class="c-card-tags">
+          <text class="a-tag" wx:for="{{item.keywordList}}" wx:for-item="kw" wx:key="*this">{{kw}}</text>
+          <text class="a-tag a-tag-ai" wx:if="{{item.aiTips}}">含 AI 建议</text>
+        </view>
+      </view>
+      <view class="c-del" catchtap="onDelete" data-id="{{item.id}}" hover-class="del-hover">删除</view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty" wx:if="{{!loading && !guides.length}}">
+    <view class="empty-title">暂无攻略数据</view>
+    <view class="empty-tip">可点击上方「重置演示数据」恢复示例内容</view>
+  </view>
+</view>
