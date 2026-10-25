@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>漫途 · AI 文旅攻略共创社区 — 作品申报书</title>
+<style>
+  :root{
+    --ink:#1b1b1b; --muted:#5f6b6a; --accent:#0f766e; --accent2:#b45309;
+    --rule:#d8dedc; --bg2:#f4f7f6;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    font-family:"Microsoft YaHei","PingFang SC",sans-serif;
+    color:var(--ink); font-size:10.5pt; line-height:1.66;
+    -webkit-font-smoothing:antialiased;
+  }
+  @page{ size:A4; margin:20mm 18mm 18mm; }
+  @media print{ .sheet{ width:auto; margin:0; padding:0; box-shadow:none; } }
+  @media screen{
+    body{ background:#e9edec; padding:24px 0; }
+    .sheet{ width:210mm; min-height:297mm; margin:0 auto 24px; padding:20mm 18mm;
+            background:#fff; box-shadow:0 2px 14px rgba(0,0,0,.12); }
+  }
+
+  /* ---------- 封面 ---------- */
+  .cover{ height:245mm; display:flex; flex-direction:column; justify-content:space-between; }
+  .cover .band{ height:6mm; background:linear-gradient(90deg,var(--accent),#1f9d8f 55%,#8ecfc4); }
+  .cover .kicker{ letter-spacing:.32em; font-size:9pt; color:var(--accent); font-weight:700; }
+  .cover h1{ font-size:27pt; line-height:1.28; margin:6mm 0 4mm; letter-spacing:.02em; }
+  .cover h1 small{ display:block; font-size:13pt; font-weight:400; color:var(--muted); letter-spacing:.06em; margin-top:3mm; }
+  .cover .sub{ font-size:11pt; color:var(--muted); border-left:3px solid var(--accent2); padding-left:4mm; }
+  .cover .meta{ width:100%; border-collapse:collapse; font-size:10pt; }
+  .cover .meta th{ width:26mm; text-align:left; font-weight:400; color:var(--muted); padding:2.2mm 0; vertical-align:top; }
+  .cover .meta td{ padding:2.2mm 0; border-bottom:1px dotted var(--rule); }
+  .fill{ color:var(--accent2); }
+  .cover .note{ font-size:8.5pt; color:var(--muted); line-height:1.6; }
+
+  /* ---------- 正文 ---------- */
+  h2.chap{
+    font-size:14pt; margin:0 0 4mm; padding-bottom:2.5mm;
+    border-bottom:2px solid var(--accent); page-break-before:always; letter-spacing:.02em;
+  }
+  h2.chap .no{ color:var(--accent); font-weight:700; margin-right:3mm; }
+  h3{ font-size:11pt; margin:5mm 0 2mm; color:var(--accent); }
+  p{ margin:0 0 2.6mm; text-align:justify; }
+  .lead{ font-size:11pt; color:#2b3634; }
+  strong{ font-weight:700; }
+  em.key{ font-style:normal; color:var(--accent); font-weight:700; }
+
+  ul,ol{ margin:0 0 3mm; padding-left:5.5mm; }
+  li{ margin-bottom:1.4mm; text-align:justify; }
+
+  table{ width:100%; border-collapse:collapse; font-size:9.5pt; margin:2mm 0 4mm; page-break-inside:avoid; }
+  th,td{ border:1px solid var(--rule); padding:1.8mm 2.4mm; vertical-align:top; text-align:left; }
+  th{ background:var(--bg2); font-weight:700; color:#22403c; }
+  td.num{ text-align:right; font-variant-numeric:tabular-nums; }
+
+  .callout{ background:var(--bg2); border-left:3px solid var(--accent2); padding:3mm 4mm; margin:3mm 0; font-size:9.8pt; }
+  .callout b{ color:var(--accent2); }
+
+  .innov{ display:table; width:100%; border-collapse:separate; border-spacing:0 2mm; }
+  .innov .row{ display:table-row; }
+  .innov .idx{ display:table-cell; width:9mm; vertical-align:top; color:var(--accent); font-weight:700; font-size:11pt; }
+  .innov .txt{ display:table-cell; vertical-align:top; }
+  .innov .txt b{ display:block; margin-bottom:.6mm; }
+
+  .sig{ margin-top:8mm; font-size:9.5pt; color:var(--muted); }
+  .sig span{ display:inline-block; min-width:34mm; border-bottom:1px solid var(--rule); }
+  .footnote{ font-size:8.5pt; color:var(--muted); border-top:1px solid var(--rule); padding-top:2mm; margin-top:4mm; }
+</style>
+</head>
+<body>
+
+<!-- ================= 封面 ================= -->
+<section class="sheet">
+  <div class="cover">
+    <div>
+      <div class="band"></div>
+      <div style="margin-top:12mm" class="kicker">传智杯 · AI 小程序赛道 · 作品申报书</div>
+      <h1>漫途
+        <small>AI 文旅攻略共创社区</small>
+      </h1>
+      <p class="sub">以「AI 讲解 + 行程生成 + 社区共创」重构旅行前的决策路径<br>原生微信小程序 · Node 轻服务 · Ollama DeepSeek-R1:7B</p>
+    </div>
+
+    <table class="meta">
+      <tr><th>作品名称</th><td>漫途 · AI 文旅攻略共创社区</td></tr>
+      <tr><th>参赛赛道</th><td>传智杯 · AI 小程序赛道</td></tr>
+      <tr><th>作品形态</th><td>原生微信小程序（22 个页面）+ 本地 Node 服务 + 本地大模型</td></tr>
+      <tr><th>团队名称</th><td class="fill">（待填写）</td></tr>
+      <tr><th>团队成员</th><td class="fill">（待填写：姓名 / 学校 / 专业 / 年级）</td></tr>
+      <tr><th>指导教师</th><td class="fill">（待填写）</td></tr>
+      <tr><th>联系方式</th><td class="fill">（待填写：手机 / 邮箱）</td></tr>
+      <tr><th>代码仓库</th><td>https://github.com/Sam-1016/merged</td></tr>
+      <tr><th>申报日期</th><td>2026 年 10 月</td></tr>
+    </table>
+
+    <p class="note">
+      填写说明：标注「待填写」的字段请在提交前补齐。本申报书与《技术文档》配套提交，
+      所有数据均来自作品实测，可在仓库中复核。
+    </p>
+  </div>
+</section>
+
+<!-- ================= 一、作品概述 ================= -->
+<section class="sheet">
+  <h2 class="chap"><span class="no">一</span>作品概述</h2>
+
+  <p class="lead">「漫途」是一款面向自由行人群的微信小程序。它把旅行前最耗神的三个动作——
+  <em class="key">读攻略、定行程、找人问</em>——收进一个入口：用户说出想去的地方和偏好，
+  AI 给出可执行的行程与讲解，社区里的真实攻略再补上「别人踩过的坑」。</p>
+
+  <h3>1.1 一句话定位</h3>
+  <p>一个用 AI 降低旅行决策成本、用社区沉淀真实经验的文旅攻略共创平台。</p>
+
+  <h3>1.2 作品简介</h3>
+  <p>小程序以原生技术栈开发，共 22 个页面、5 个一级页签（首页 / 社区 / 攻略 / 目的地 / 我的），
+  内置 17 条结构化攻略与 17 个目的地资料。AI 能力由本地部署的
+  <strong>DeepSeek-R1:7B（Ollama）</strong>提供，通过零依赖 Node 服务桥接，覆盖三类场景：
+  攻略的<strong>多主题讲解</strong>（历史 / 美食 / 摄影 / 亲子等视角切换）、
+  <strong>自然语言转结构化行程</strong>、以及<strong>按表单生成攻略初稿</strong>。
+  当模型或服务不可用时，小程序自动降级为本地模板与内置数据，功能不中断——这是为参赛演示环境专门设计的可靠性方案。</p>
+
+  <h3>1.3 与常见方案的差异</h3>
+  <table>
+    <tr><th style="width:26%">对比项</th><th style="width:37%">常见旅游 App / 小程序</th><th>漫途的做法</th></tr>
+    <tr><td>内容来源</td><td>平台编辑或爬取的聚合内容，千篇一律</td><td>用户共创 + 结构化模板，发布即进入可检索的攻略库</td></tr>
+    <tr><td>AI 使用方式</td><td>一个空白输入框，让用户自己「会提问」</td><td>表单化的结构化输入，把提示词工程藏在界面背后</td></tr>
+    <tr><td>攻略呈现</td><td>长文，读完才知道是否适合自己</td><td>同一篇攻略可按主题切换讲解视角，按需取用</td></tr>
+    <tr><td>可靠性</td><td>断网或服务异常时直接空白</td><td>AI 可缺席：本地缓存兜底，主流程始终可走通</td></tr>
+  </table>
+
+  <h3>1.4 完成度</h3>
+  <p>作品已完成从浏览、收藏、登录、足迹到创作、发布、AI 生成、后台管理的完整闭环，
+  前后端均可独立运行，代码已整理为公开仓库并通过静态检查与功能用例验证。</p>
+</section>
+
+<!-- ================= 二、背景与痛点 ================= -->
+<section class="sheet">
+  <h2 class="chap"><span class="no">二</span>背景与用户痛点</h2>
+
+  <h3>2.1 需求背景</h3>
+  <p>自由行已成为主流出行方式，但信息供给与决策效率严重不匹配：攻略平台内容过载，
+  同一目的地的笔记动辄上千篇，用户需要花大量时间筛选；而行程规划仍依赖手工拼装，
+  交通、住宿、景点、餐厅之间的时序约束很少有人能一次排对。</p>
+  <p>大模型的成熟让「把自然语言需求直接变成可执行行程」成为可能，但通用聊天工具存在三个落地障碍：
+  输出不可控、结果不可复用、离线不可用。文旅场景恰恰要求<strong>可控、可保存、可分享</strong>。</p>
+
+  <h3>2.2 目标用户</h3>
+  <table>
+    <tr><th style="width:22%">用户类型</th><th style="width:30%">典型特征</th><th>核心诉求</th></tr>
+    <tr><td>首次自由行者</td><td>没有目的地经验，怕踩坑</td><td>要一份能照着走的行程，而不是一堆笔记</td></tr>
+    <tr><td>深度体验者</td><td>对历史、美食、摄影有明确偏好</td><td>同一地点想要不同视角的讲解</td></tr>
+    <tr><td>经验分享者</td><td>走过的地方多，愿意输出</td><td>发布门槛低，发出去有人看、能被检索</td></tr>
+  </table>
+
+  <h3>2.3 核心痛点</h3>
+  <ol>
+    <li><strong>筛选成本高</strong>：攻略数量多但结构不统一，读十篇才能拼出一条路线。</li>
+    <li><strong>规划门槛高</strong>：行程要兼顾时间、距离、体力与预算，普通人缺少方法论。</li>
+    <li><strong>内容同质化</strong>：AI 生成内容若不加以约束，容易产出「看起来都对、实际去不了」的行程。</li>
+    <li><strong>工具不可靠</strong>：旅行途中网络不稳定，依赖云端 AI 的工具一旦断连就失去价值。</li>
+  </ol>
+
+  <h3>2.4 需求边界</h3>
+  <p>作品聚焦「行前决策」这一环，不做订票、支付、导航等交易与履约能力；
+  内容以结构化攻略为主体，AI 承担讲解与初稿生成，最终由用户确认后发布。</p>
+</section>
+
+<!-- ================= 三、功能与技术实现 ================= -->
+<section class="sheet">
+  <h2 class="chap"><span class="no">三</span>功能与技术实现</h2>
+
+  <h3>3.1 功能清单</h3>
+  <table>
+    <tr><th style="width:16%">模块</th><th style="width:44%">能力</th><th>实现要点</th></tr>
+    <tr><td>首页</td><td>推荐攻略、目的地入口、搜索</td><td>按标签与热度组织，数据来自本地结构化数据源</td></tr>
+    <tr><td>攻略</td><td>列表、详情、主题讲解、收藏</td><td>详情页按主题切换讲解视角；收藏落本地持久化</td></tr>
+    <tr><td>AI 行程</td><td>自然语言需求 → 分日行程</td><td>表单收集天数/预算/偏好，后端调用模型并结构化解析</td></tr>
+    <tr><td>AI 攻略</td><td>表单 → 攻略初稿</td><td>结构化输入替代自由提示词，输出可直接编辑发布</td></tr>
+    <tr><td>社区</td><td>发布、浏览、点赞、搜索</td><td>发布先写本地缓存，再异步同步后台</td></tr>
+    <tr><td>我的</td><td>登录、资料、收藏、足迹、我的攻略</td><td>头像昵称走微信原生能力，资料与足迹全部持久化</td></tr>
+    <tr><td>后台管理</td><td>攻略增删改、服务状态提示</td><td>页面内可视化管理，服务离线时自动提示并降级</td></tr>
+  </table>
+
+  <h3>3.2 技术架构</h3>
+  <p>采用「轻前端 + 薄后端 + 本地模型」三层结构，全部组件零第三方依赖：</p>
+  <ul>
+    <li><strong>表现层</strong>：原生微信小程序，22 个页面，自定义导航栏组件，无 UI 框架。</li>
+    <li><strong>服务层</strong>：Node.js 原生 <code>http</code> 模块实现的单文件服务（171 行），
+        提供 <code>/api/chat</code> 模型桥接与 <code>/api/guides</code> 攻略 CRUD，数据落 <code>data.json</code>。</li>
+    <li><strong>模型层</strong>：Ollama 本地推理 <code>deepseek-r1:7b</code>，通过 HTTP 调用，非流式返回。</li>
+    <li><strong>兜底层</strong>：小程序本地 Storage 保存用户资料、收藏、足迹与攻略缓存，服务不可用时接管全部读写。</li>
+  </ul>
+
+  <h3>3.3 关键数据</h3>
+  <table>
+    <tr><th style="width:36%">指标</th><th style="width:22%" class="num">数值</th><th>说明</th></tr>
+    <tr><td>页面数量</td><td class="num">22</td><td>含登录页与后台管理页</td></tr>
+    <tr><td>代码总行数</td><td class="num">10,110</td><td>JS 4,377 / WXML 1,551 / WXSS 3,713 / JSON 298 / 服务 171</td></tr>
+    <tr><td>内置攻略 / 目的地</td><td class="num">17 / 17</td><td>结构化字段，可被检索与 AI 引用</td></tr>
+    <tr><td>源码包体积</td><td class="num">1.7 MB</td><td>压缩封面图后满足微信 2 MB 主包限制</td></tr>
+    <tr><td>第三方依赖</td><td class="num">0</td><td>前端与后端均无 npm 依赖</td></tr>
+  </table>
+</section>
+
+<!-- ================= 四、AI 技术方案 ================= -->
+<section class="sheet">
+  <h2 class="chap"><span class="no">四</span>AI 技术方案</h2>
+
+  <h3>4.1 模型选型</h3>
+  <p>选择本地部署的 <strong>DeepSeek-R1:7B</strong>，通过 <strong>Ollama</strong> 提供 HTTP 接口。
+  理由有三：中文语义与常识推理表现稳定；7B 量化后可在普通笔记本上运行，演示不依赖外网；
+  本地推理意味着用户输入不出本机，隐私风险最低。</p>
+
+  <h3>4.2 三类 AI 能力</h3>
+  <table>
+    <tr><th style="width:20%">能力</th><th style="width:34%">输入</th><th>输出与约束</th></tr>
+    <tr><td>主题式攻略讲解</td><td>攻略正文 + 主题（历史/美食/摄影/亲子/省钱）</td><td>同一内容多视角重述，禁止编造景区事实，长度受控</td></tr>
+    <tr><td>行程生成</td><td>目的地、天数、预算、同行人、偏好</td><td>按天分段，含时间、地点、理由，附预算估算</td></tr>
+    <tr><td>攻略初稿生成</td><td>结构化表单（地点、天数、亮点、贴士）</td><td>输出可编辑草稿，用户确认后才进入社区</td></tr>
+  </table>
+
+  <h3>4.3 提示词与输出处理</h3>
+  <ul>
+    <li><strong>结构化输入替代自由提问</strong>：用户只填表单，提示词由程序拼装，降低「不会提问」造成的质量波动。</li>
+    <li><strong>思维链过滤</strong>：R1 系列会输出 <code>&lt;think&gt;</code> 段落，服务端统一剥离后再回传，前端只呈现结论。</li>
+    <li><strong>多字段兼容解析</strong>：兼容 <code>reply / response / answer / text / message</code> 及嵌套结构，
+        避免模型或网关字段变化导致解析失败。</li>
+    <li><strong>分级超时</strong>：端侧等待 120 秒、服务端转发 180 秒，超时即降级，不无限挂起。</li>
+  </ul>
+
+  <h3>4.4 可靠性设计：AI 可以缺席</h3>
+  <div class="callout">
+    <b>设计原则：</b>AI 是增强项，不是必需项。任一环节失败都不得阻塞用户主流程。
+  </div>
+  <ol>
+    <li>写操作先落本地 Storage，成功后再异步同步后台；同步失败仅提示「已存本地」。</li>
+    <li>模型不可用时，攻略讲解回退到内置文案，行程生成回退到模板化建议。</li>
+    <li>后台服务离线时，社区与后台管理页显示离线状态，读写全部转本地，功能仍可用。</li>
+  </ol>
+
+  <h3>4.5 成本与合规</h3>
+  <p>本地推理无按次调用成本，适合赛事演示与小规模验证；用户输入不出本机，
+  规避了第三方模型服务的数据外流问题。若后续对外发布，将改造为「云端模型 + 内容安全审核」的组合方案。</p>
+</section>
+
+<!-- ================= 五、创新点 ================= -->
+<section class="sheet">
+  <h2 class="chap"><span class="no">五</span>创新点说明</h2>
+
+  <div class="innov">
+    <div class="row"><div class="idx">01</div><div class="txt">
+      <b>可切换主题的攻略讲解</b>
+      同一篇攻略不再只有一种读法。用户按「历史 / 美食 / 摄影 / 亲子 / 省钱」切换视角，
+      由 AI 重述内容重点。解决了攻略「读完了才发现不是我要的」这一筛选成本问题，
+      也让已有内容被反复利用，而不是不断重复生产。
+    </div></div>
+
+    <div class="row"><div class="idx">02</div><div class="txt">
+      <b>结构化输入替代自由提示词</b>
+      把「提示词工程」从用户侧移到程序侧：用户只见表单，不见 Prompt。
+      输入维度固定（目的地、天数、预算、同行人、偏好），输出因此稳定可比，
+      既降低使用门槛，也避免模型自由发挥导致的行程不可执行。
+    </div></div>
+
+    <div class="row"><div class="idx">03</div><div class="txt">
+      <b>可信度分层</b>
+      平台明确区分三类内容：内置结构化攻略（人工核校）、用户共创攻略（真实经历）、
+      AI 生成初稿（标注来源、需人工确认后发布）。三层内容不与混同，
+      用户一眼能判断「这条信息该信到什么程度」。
+    </div></div>
+
+    <div class="row"><div class="idx">04</div><div class="txt">
+      <b>AI 可缺席的可靠性设计</b>
+      与多数「AI 挂了就白屏」的产品不同，本作品把降级当作一等公民：
+      先写本地、再同步后台，模型不可用则回退模板。
+      在网络不稳的旅行场景与离线演示环境下，功能依然完整可用。
+    </div></div>
+
+    <div class="row"><div class="idx">05</div><div class="txt">
+      <b>端云协同的本地兜底</b>
+      小程序端承担全部读写兜底，Node 服务只做模型桥接与多端同步，
+      职责边界清晰、部署成本极低（单文件服务、零依赖、一键启动），
+      适合校园团队长期维护，也便于迁移到云托管。
+    </div></div>
+  </div>
+
+  <div class="callout">
+    <b>创新点小结：</b>不是把大模型塞进小程序，而是重新设计了「人—AI—内容」的分工：
+    AI 负责重述与初稿，人负责确认与经验，系统负责在任何一环失效时仍然可用。
+  </div>
+</section>
+
+<!-- ================= 六、完成情况 ================= -->
+<section class="sheet">
+  <h2 class="chap"><span class="no">六</span>完成情况与验证</h2>
+
+  <h3>6.1 完成情况</h3>
+  <table>
+    <tr><th style="width:26%">维度</th><th style="width:14%">状态</th><th>说明</th></tr>
+    <tr><td>前端页面</td><td>已完成</td><td>22 页，5 个一级页签，含登录与后台管理</td></tr>
+    <tr><td>AI 能力</td><td>已完成</td><td>讲解、行程、攻略生成三类，含思维链过滤与超时降级</td></tr>
+    <tr><td>后端服务</td><td>已完成</td><td>模型桥接 + 攻略 CRUD + JSON 持久化</td></tr>
+    <tr><td>账号与持久化</td><td>已完成</td><td>微信头像昵称登录，资料/收藏/足迹重启不丢失</td></tr>
+    <tr><td>社区共创</td><td>已完成</td><td>发布、浏览、点赞、同步后台</td></tr>
+    <tr><td>降级策略</td><td>已完成</td><td>服务离线、模型超时均有独立回退路径</td></tr>
+  </table>
+
+  <h3>6.2 验证方式</h3>
+  <ul>
+    <li><strong>功能用例</strong>：覆盖登录、资料持久化、收藏、足迹、发布、AI 三类能力、后台管理等 10 条主流程用例。</li>
+    <li><strong>接口验证</strong>：对 <code>/api/chat</code> 与 <code>/api/guides</code> 做请求冒烟，校验字段与状态码。</li>
+    <li><strong>降级验证</strong>：断开后台、断开模型、缩短超时三种条件下验证页面不白屏、数据不丢。</li>
+    <li><strong>静态检查</strong>：全部 JS 通过语法检查，编码统一 UTF-8 无 BOM。</li>
+  </ul>
+
+  <h3>6.3 已知不足</h3>
+  <ul>
+    <li>社区发布尚未接入内容安全检测接口，正式对外发布前需补齐。</li>
+    <li>AI 输出以文本为主，尚无图片生成与多轮追问能力。</li>
+    <li>行程生成依赖模型质量，长行程（7 天以上）稳定性有待提升。</li>
+  </ul>
+</section>
+
+<!-- ================= 七、价值与规划 ================= -->
+<section class="sheet">
+  <h2 class="chap"><span class="no">七</span>应用价值与后续规划</h2>
+
+  <h3>7.1 应用价值</h3>
+  <ul>
+    <li><strong>对用户</strong>：把「查十篇攻略 + 手工排行程」压缩为一次表单填写，决策时间显著下降。</li>
+    <li><strong>对内容生态</strong>：结构化模板降低发布门槛，AI 初稿让「想分享但不会写」的人也能产出内容。</li>
+    <li><strong>对文旅行业</strong>：沉淀的结构化攻略可作为目的地运营的内容底座，支持按主题二次分发。</li>
+    <li><strong>对教学</strong>：完整呈现了「小程序 + 轻服务 + 本地大模型 + 降级设计」的工程化落地路径，可复用为课程案例。</li>
+  </ul>
+
+  <h3>7.2 后续规划</h3>
+  <table>
+    <tr><th style="width:18%">阶段</th><th style="width:34%">目标</th><th>关键动作</th></tr>
+    <tr><td>近期</td><td>可对外发布</td><td>接入内容安全检测、完善隐私指引、补全类目资质、提交审核</td></tr>
+    <tr><td>中期</td><td>内容规模化</td><td>攻略结构化编辑器、AI 初稿质量评估、多端同步</td></tr>
+    <tr><td>远期</td><td>服务闭环</td><td>接入地图与实时天气、行程导出与协作编辑、目的地运营后台</td></tr>
+  </table>
+
+  <h3>7.3 风险与应对</h3>
+  <table>
+    <tr><th style="width:30%">风险</th><th>应对</th></tr>
+    <tr><td>AI 生成内容失真</td><td>结构化约束 + 来源标注 + 人工确认后发布</td></tr>
+    <tr><td>模型资源受限</td><td>7B 量化本地推理，超时分级降级，必要时切换云端小模型</td></tr>
+    <tr><td>UGC 合规</td><td>上线前接入内容安全接口，建立举报与下架流程</td></tr>
+  </table>
+</section>
+
+<!-- ================= 八、提交信息 ================= -->
+<section class="sheet">
+  <h2 class="chap"><span class="no">八</span>提交信息与附件</h2>
+
+  <table>
+    <tr><th style="width:26%">项目</th><th>内容</th></tr>
+    <tr><td>代码仓库（公开）</td><td>https://github.com/Sam-1016/merged</td></tr>
+    <tr><td>源码包</td><td>漫途-AI文旅攻略共创社区-参赛源码.zip（含完整 Git 提交历史）</td></tr>
+    <tr><td>技术文档</td><td>漫途-AI文旅攻略共创社区-技术文档.pdf（8 章，21 页）</td></tr>
+    <tr><td>演示视频</td><td class="fill">（待录制：建议 3–5 分钟，覆盖主流程与 AI 能力）</td></tr>
+    <tr><td>体验方式</td><td class="fill">（待补充：小程序二维码 / 体验版邀请 / 现场演示）</td></tr>
+  </table>
+
+  <h3>仓库结构</h3>
+  <pre style="font-size:8.8pt; line-height:1.6; background:var(--bg2); padding:3mm 4mm; border:1px solid var(--rule); margin:0 0 4mm;">miniprogram/   原生小程序前端（22 页）
+server/        Node 轻服务（模型桥接 + 攻略 CRUD）
+docs/          技术文档与作品申报书
+tools/         小程序码生成脚本</pre>
+
+  <h3>运行说明</h3>
+  <ol>
+    <li>用微信开发者工具导入 <code>miniprogram/</code>，勾选「不校验合法域名」。</li>
+    <li>启动 <code>server/start.bat</code> 启动本地服务（默认 3000 端口）。</li>
+    <li>如需完整 AI 能力，另启 Ollama 并拉取 <code>deepseek-r1:7b</code>。</li>
+    <li>任一步未启动都不影响主流程：小程序自动降级到本地数据。</li>
+  </ol>
+
+  <p class="sig">
+    团队负责人签字：<span></span>　　　日期：<span style="min-width:26mm"></span>
+  </p>
+
+  <p class="footnote">
+    本申报书所述功能与数据均可在公开仓库中复核。文档中不含任何第三方平台的截图或未授权素材，
+    界面图片为作品自身运行界面。
+  </p>
+</section>
+
+</body>
+</html>

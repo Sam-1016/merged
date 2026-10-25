@@ -142,6 +142,7 @@ ai-travel-guide-community/
 │   └── start.bat                 # Windows 一键启动
 ├── docs/
 │   ├── 漫途-AI文旅攻略共创社区-技术文档.pdf
+│   ├── 漫途-AI文旅攻略共创社区-作品申报书.pdf
 │   └── qrcode.png                # 体验二维码
 ├── tools/
 │   └── gen-qrcode.js             # 小程序码生成脚本（需 AppID + AppSecret）
