@@ -1,0 +1,94 @@
+/* ============================================================
+   攻略详情页样式（小程序原生 WXSS）
+   ============================================================ */
+.page {
+  min-height: 100vh;
+  padding: 24rpx 32rpx 80rpx;
+}
+
+.page-head {
+  padding-top: 18rpx;
+}
+
+.detail-title {
+  font-size: 44rpx;
+  line-height: 1.3;
+}
+
+.author-line {
+  margin-top: 24rpx;
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  background: var(--pine-soft);
+  color: var(--pine);
+  font-size: 26rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.author-name {
+  margin-left: 16rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+}
+
+.pub-time {
+  margin-left: 16rpx;
+  font-size: 22rpx;
+  color: var(--faint);
+}
+
+.info-tags {
+  margin-top: 24rpx;
+}
+
+.tag.price {
+  background: var(--pine);
+  color: #f6f1e8;
+}
+
+.block-text {
+  display: block;
+  font-size: 28rpx;
+  line-height: 1.8;
+  color: var(--ink);
+  white-space: pre-wrap;
+}
+
+/* AI 优化推荐分区（松绿底色块，与用户原创内容视觉区分） */
+.ai-block {
+  padding: 28rpx;
+  border-radius: 24rpx;
+  background: var(--pine-soft);
+}
+
+.ai-block .block-title {
+  margin-top: 0;
+  color: var(--pine);
+}
+
+.empty-ai .block-text {
+  color: var(--muted);
+}
+
+.retry-btn {
+  margin-top: 24rpx;
+  height: 72rpx;
+  font-size: 26rpx;
+}
+
+.back-wrap {
+  margin-top: 56rpx;
+}
+
+.back-btn {
+  width: 100%;
+  height: 88rpx;
+}

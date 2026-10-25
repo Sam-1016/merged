@@ -1,0 +1,143 @@
+<view class="page">
+
+  <!-- ===== 编辑模式 ===== -->
+  <block wx:if="{{!isView}}">
+    <view class="page-head">
+      <text class="page-kicker">NEW GUIDE</text>
+      <view class="page-title-row">
+        <text class="page-title">写一条攻略</text>
+      </view>
+    </view>
+
+    <view class="form">
+      <view class="field">
+        <text class="label">攻略标题</text>
+        <input class="input" placeholder="例如：大理三日慢游" value="{{form.title}}" data-field="title" bindinput="onInput" />
+      </view>
+
+      <view class="field">
+        <text class="label">目的地</text>
+        <input class="input" placeholder="城市或景点，例如：大理" value="{{form.destination}}" data-field="destination" bindinput="onInput" />
+      </view>
+
+      <view class="field-row">
+        <view class="field half">
+          <text class="label">路程时长</text>
+          <input class="input" placeholder="如：高铁 5 小时" value="{{form.duration}}" data-field="duration" bindinput="onInput" />
+        </view>
+        <view class="field half">
+          <text class="label">总预算/单人价格</text>
+          <input class="input" type="digit" placeholder="如：1500" value="{{form.budget}}" data-field="budget" bindinput="onInput" />
+        </view>
+      </view>
+
+      <view class="field-row">
+        <view class="field half">
+          <text class="label">门票价格</text>
+          <input class="input" type="digit" placeholder="如：120" value="{{form.ticket}}" data-field="ticket" bindinput="onInput" />
+        </view>
+        <view class="field half">
+          <text class="label">出行方式</text>
+          <picker class="picker" range="{{transports}}" value="{{transportIdx}}" bindchange="onTransport">
+            <view class="picker-in">
+              <text>{{form.transport}}</text>
+              <view class="arrow"></view>
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="field">
+        <text class="label">适合人群（可多选）</text>
+        <view class="tags crowd-tags">
+          <text
+            class="tag crowd {{item.on ? 'on' : ''}}"
+            wx:for="{{crowdOptions}}"
+            wx:key="name"
+            data-index="{{index}}"
+            bindtap="toggleCrowd"
+          >{{item.name}}</text>
+        </view>
+      </view>
+
+      <view class="field">
+        <text class="label">最佳出行月份</text>
+        <picker class="picker" range="{{months}}" value="{{monthIdx}}" bindchange="onMonth">
+          <view class="picker-in">
+            <text>{{form.month}}</text>
+            <view class="arrow"></view>
+          </view>
+        </picker>
+      </view>
+
+      <view class="field">
+        <text class="label">亮点关键词（多个用逗号隔开）</text>
+        <input class="input" placeholder="如：洱海骑行, 古城夜市, 苍山索道" value="{{form.keywords}}" data-field="keywords" bindinput="onInput" />
+        <text class="hint">关键词会发送给 AI，用于补充推荐和优化攻略</text>
+      </view>
+
+      <view class="field">
+        <text class="label">避雷提醒</text>
+        <textarea class="textarea" placeholder="踩过的坑、不推荐的项目…" value="{{form.avoid}}" data-field="avoid" bindinput="onInput" />
+      </view>
+
+      <view class="field">
+        <text class="label">详细行程描述</text>
+        <textarea class="textarea tall" placeholder="按天描述路线安排、食宿建议…" value="{{form.detail}}" data-field="detail" bindinput="onInput" />
+      </view>
+    </view>
+
+    <view class="submit-wrap">
+      <button class="btn submit" bindtap="onSubmit" hover-class="tap-hover">提交保存</button>
+    </view>
+  </block>
+
+  <!-- ===== 详情查看模式 ===== -->
+  <block wx:else>
+    <view class="page-head">
+      <text class="page-kicker">{{form.destination}}</text>
+      <view class="page-title-row">
+        <text class="page-title detail-title">{{form.title}}</text>
+      </view>
+    </view>
+
+    <view class="tags detail-tags">
+      <text class="tag price">¥{{form.budget}}/人</text>
+      <text class="tag">路程 {{form.duration}}</text>
+      <text class="tag">门票 ¥{{form.ticket}}</text>
+      <text class="tag">{{form.transport}}</text>
+      <text class="tag">{{form.month}}出发</text>
+      <text class="tag" wx:for="{{form.crowds}}" wx:key="*this">{{item}}</text>
+    </view>
+
+    <view class="block" wx:if="{{form.keywords}}">
+      <text class="block-title">亮点关键词</text>
+      <text class="block-text">{{form.keywords}}</text>
+    </view>
+
+    <view class="block" wx:if="{{form.detail}}">
+      <text class="block-title">详细行程</text>
+      <text class="block-text">{{form.detail}}</text>
+    </view>
+
+    <view class="block" wx:if="{{form.avoid}}">
+      <text class="block-title">避雷提醒</text>
+      <text class="block-text">{{form.avoid}}</text>
+    </view>
+
+    <view class="block ai-block" wx:if="{{aiLoading}}">
+      <text class="block-title">AI 补充推荐</text>
+      <text class="block-text">AI 正在基于攻略信息生成推荐，deepseek-r1 推理较慢，请稍候…</text>
+    </view>
+    <view class="block ai-block" wx:elif="{{aiTips}}">
+      <text class="block-title">AI 补充推荐</text>
+      <text class="block-text">{{aiTips}}</text>
+    </view>
+    <view class="block ai-block empty-ai" wx:else>
+      <text class="block-title">AI 补充推荐</text>
+      <text class="block-text">暂未获取到 AI 建议。请确认本地 AI 服务已启动，且开发者工具已勾选"不校验合法域名"。</text>
+      <button class="btn ghost retry-btn" bindtap="retryAi" hover-class="tap-hover">重新获取 AI 推荐</button>
+    </view>
+  </block>
+
+</view>

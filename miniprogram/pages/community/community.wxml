@@ -1,0 +1,55 @@
+<!-- ============================================================
+     社区广场页：公共 UGC 攻略卡片流 + 底部居中悬浮加号
+     ============================================================ -->
+<view class="page">
+  <view class="page-head">
+    <text class="page-kicker">COMMUNITY</text>
+    <view class="page-title-row">
+      <text class="page-title">攻略社区</text>
+      <text class="page-count">{{total}} 条分享</text>
+    </view>
+  </view>
+
+  <!-- 攻略卡片列表 -->
+  <view class="cards" wx:if="{{guides.length > 0}}">
+    <view class="c-card" wx:for="{{guides}}" wx:key="id" data-id="{{item.id}}" bindtap="onCard" hover-class="tap-hover">
+      <!-- 标题 + 发布时间 -->
+      <view class="c-card-head">
+        <text class="c-card-title two-line">{{item.title}}</text>
+      </view>
+      <view class="c-card-meta">
+        <text class="c-dest">{{item.destination}}</text>
+        <text class="c-time">{{item.timeLabel}}</text>
+      </view>
+      <!-- 行程摘要（前 45 字） -->
+      <text class="c-excerpt two-line">{{item.excerpt}}</text>
+      <!-- 标签行：预算 / 路程 / 出行标签（方式·月份·人群）/ 亮点关键词 -->
+      <view class="c-card-tags">
+        <text class="tag price">¥{{item.budget}}/人</text>
+        <text class="tag">路程 {{item.duration}}</text>
+        <text class="tag" wx:if="{{item.transport}}">{{item.transport}}</text>
+        <text class="tag" wx:if="{{item.month}}">{{item.month}}出发</text>
+        <text class="tag" wx:for="{{item.crowds}}" wx:for-item="c" wx:key="*this">{{c}}</text>
+        <text class="tag kw" wx:for="{{item.keywordList}}" wx:for-item="kw" wx:key="*this"># {{kw}}</text>
+      </view>
+      <!-- 发布人信息 -->
+      <view class="c-card-foot">
+        <view class="c-author">
+          <view class="c-avatar">{{item.author[0]}}</view>
+          <text class="c-name">{{item.author}}</text>
+        </view>
+        <view class="arrow"></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty" wx:else>
+    <view class="empty-mark">路</view>
+    <text class="empty-title">社区还很安静</text>
+    <text class="empty-desc">点下方加号，发布第一条攻略</text>
+  </view>
+
+  <!-- 底部居中固定悬浮圆形加号按钮 -->
+  <view class="fab" bindtap="goPublish" hover-class="fab-hover">+</view>
+</view>

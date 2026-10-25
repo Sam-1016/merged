@@ -1,0 +1,107 @@
+.page {
+  min-height: 100vh;
+  padding: 24rpx 32rpx 80rpx;
+}
+
+.page-head {
+  padding-top: 18rpx;
+}
+
+.form {
+  margin-top: 40rpx;
+}
+
+.field {
+  margin-bottom: 36rpx;
+}
+
+.field-row {
+  display: flex;
+  gap: 24rpx;
+}
+
+.field.half {
+  flex: 1;
+  min-width: 0;
+}
+
+.label {
+  display: block;
+  margin-bottom: 14rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.input {
+  height: 88rpx;
+  padding: 0 28rpx;
+  border-radius: 20rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  font-size: 28rpx;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 160rpx;
+  padding: 22rpx 28rpx;
+  border-radius: 20rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+.textarea.tall {
+  min-height: 240rpx;
+}
+
+.picker-in {
+  height: 88rpx;
+  padding: 0 28rpx;
+  border-radius: 20rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 28rpx;
+}
+
+.hint {
+  display: block;
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  color: var(--faint);
+}
+
+/* 适合人群多选 */
+.crowd-tags .crowd {
+  padding: 14rpx 32rpx;
+  font-size: 26rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  color: var(--muted);
+}
+
+.crowd-tags .crowd.on {
+  background: var(--pine);
+  border-color: var(--pine);
+  color: #f6f1e8;
+}
+
+/* 提交按钮 */
+.submit-wrap {
+  margin-top: 24rpx;
+}
+
+.submit {
+  width: 100%;
+  height: 96rpx;
+  font-size: 30rpx;
+}
+
+.submit[disabled] {
+  opacity: 0.6;
+}

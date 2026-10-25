@@ -1,0 +1,42 @@
+<view class="page">
+  <view class="page-head">
+    <text class="page-kicker">MY GUIDES</text>
+    <view class="page-title-row">
+      <text class="page-title">我的攻略</text>
+      <text class="page-count">共 {{total}} 条</text>
+    </view>
+  </view>
+
+  <!-- 攻略卡片列表 -->
+  <view class="cards" wx:if="{{guides.length > 0}}">
+    <view class="g-card" wx:for="{{guides}}" wx:key="id" data-id="{{item.id}}" bindtap="onCard" hover-class="tap-hover">
+      <view class="g-card-head">
+        <text class="g-card-title one-line">{{item.title}}</text>
+        <text class="g-card-dest">{{item.destination}}</text>
+      </view>
+      <view class="g-card-tags">
+        <text class="tag price">¥{{item.budget}}/人</text>
+        <text class="tag">路程 {{item.duration}}</text>
+        <text class="tag" wx:if="{{item.transport}}">{{item.transport}}</text>
+        <text class="tag" wx:if="{{item.month}}">{{item.month}}出发</text>
+      </view>
+      <view class="tags" wx:if="{{item.keywordList.length > 0}}">
+        <text class="tag kw" wx:for="{{item.keywordList}}" wx:for-item="kw" wx:key="*this"># {{kw}}</text>
+      </view>
+      <view class="g-card-foot">
+        <text class="pub-state" wx:if="{{item.publishedToCommunity}}">已发布到社区 ✓</text>
+        <text class="pub-btn" wx:else catchtap="publishToCommunity" data-id="{{item.id}}">发布到社区 →</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty" wx:else>
+    <view class="empty-mark">路</view>
+    <text class="empty-title">还没有你的攻略</text>
+    <text class="empty-desc">点下方加号，写下第一条想走的路线</text>
+  </view>
+
+  <!-- 底部居中悬浮加号 -->
+  <view class="fab" bindtap="goCreate" hover-class="fab-hover">+</view>
+</view>

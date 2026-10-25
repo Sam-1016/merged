@@ -1,0 +1,68 @@
+<!-- ============================================================
+     攻略详情页：分区展示 ① 用户原创攻略 ② AI 优化推荐方案
+     ============================================================ -->
+<view class="page" wx:if="{{guide}}">
+
+  <!-- ===== 分区一：用户原创提交的完整攻略信息 ===== -->
+  <view class="page-head">
+    <text class="page-kicker">{{guide.destination}}</text>
+    <view class="page-title-row">
+      <text class="page-title detail-title">{{guide.title}}</text>
+    </view>
+    <view class="author-line">
+      <view class="avatar">{{guide.author[0]}}</view>
+      <text class="author-name">{{guide.author}}</text>
+      <text class="pub-time">发布于 {{guide.timeLabel}}</text>
+    </view>
+  </view>
+
+  <!-- 关键信息标签：预算 / 路程 / 门票 / 出行方式 / 月份 / 适合人群 -->
+  <view class="tags info-tags">
+    <text class="tag price">预算 ¥{{guide.budget}}/人</text>
+    <text class="tag">路程 {{guide.duration}}</text>
+    <text class="tag">门票 {{guide.ticket}}</text>
+    <text class="tag">{{guide.transport}}</text>
+    <text class="tag">{{guide.month}}出发</text>
+    <text class="tag" wx:for="{{guide.crowds}}" wx:key="*this">{{item}}</text>
+  </view>
+
+  <!-- 亮点关键词 -->
+  <view class="block" wx:if="{{guide.keywordList.length > 0}}">
+    <text class="block-title">亮点关键词</text>
+    <view class="tags">
+      <text class="tag" wx:for="{{guide.keywordList}}" wx:key="*this"># {{item}}</text>
+    </view>
+  </view>
+
+  <!-- 详细行程 -->
+  <view class="block" wx:if="{{guide.detail}}">
+    <text class="block-title">详细行程</text>
+    <text class="block-text">{{guide.detail}}</text>
+  </view>
+
+  <!-- 避雷提醒 -->
+  <view class="block" wx:if="{{guide.avoid}}">
+    <text class="block-title">避雷提醒</text>
+    <text class="block-text">{{guide.avoid}}</text>
+  </view>
+
+  <!-- ===== 分区二：AI 智能优化后的推荐方案（DeepSeek-R1:7B） ===== -->
+  <view class="block ai-block" wx:if="{{aiLoading}}">
+    <text class="block-title">✦ AI 优化推荐</text>
+    <text class="block-text">DeepSeek-R1 正在基于亮点关键词和行程描述生成优化方案，推理需要一点时间，请稍候…</text>
+  </view>
+  <view class="block ai-block" wx:elif="{{aiTips}}">
+    <text class="block-title">✦ AI 优化推荐</text>
+    <text class="block-text">{{aiTips}}</text>
+  </view>
+  <view class="block ai-block empty-ai" wx:else>
+    <text class="block-title">✦ AI 优化推荐</text>
+    <text class="block-text">暂未获取到 AI 优化方案。请确认本地 AI 服务（127.0.0.1:3000）已启动，且开发者工具已勾选"不校验合法域名"。</text>
+    <button class="btn ghost retry-btn" bindtap="retryAi" hover-class="tap-hover">重新获取 AI 建议</button>
+  </view>
+
+  <!-- 返回社区广场 -->
+  <view class="back-wrap">
+    <button class="btn ghost back-btn" bindtap="goBack" hover-class="tap-hover">返回社区广场</button>
+  </view>
+</view>

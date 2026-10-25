@@ -1,0 +1,109 @@
+<!-- ============================================================
+     发布攻略表单页：12 项字段（输入框 / 下拉 picker / 多选 / 多行文本）
+     ============================================================ -->
+<view class="page">
+  <view class="page-head">
+    <text class="page-kicker">NEW POST</text>
+    <view class="page-title-row">
+      <text class="page-title">发布攻略</text>
+    </view>
+  </view>
+
+  <view class="form">
+    <!-- ① 攻略标题 -->
+    <view class="field">
+      <text class="label">① 攻略标题</text>
+      <input class="input" placeholder="例如：大理三日慢游" value="{{form.title}}" data-field="title" bindinput="onInput" />
+    </view>
+
+    <!-- ② 目的地 -->
+    <view class="field">
+      <text class="label">② 目的地</text>
+      <input class="input" placeholder="城市或景点，例如：大理" value="{{form.destination}}" data-field="destination" bindinput="onInput" />
+    </view>
+
+    <!-- ③ 路程时长 / ④ 单人预算 -->
+    <view class="field-row">
+      <view class="field half">
+        <text class="label">③ 路程时长</text>
+        <input class="input" placeholder="如：高铁 5 小时" value="{{form.duration}}" data-field="duration" bindinput="onInput" />
+      </view>
+      <view class="field half">
+        <text class="label">④ 单人预算价格</text>
+        <input class="input" type="digit" placeholder="如：1500" value="{{form.budget}}" data-field="budget" bindinput="onInput" />
+      </view>
+    </view>
+
+    <!-- ⑤ 门票价格 / ⑥ 出行方式（下拉） -->
+    <view class="field-row">
+      <view class="field half">
+        <text class="label">⑤ 门票价格</text>
+        <input class="input" placeholder="如：120" value="{{form.ticket}}" data-field="ticket" bindinput="onInput" />
+      </view>
+      <view class="field half">
+        <text class="label">⑥ 出行方式</text>
+        <picker class="picker" range="{{transports}}" value="{{transportIdx}}" bindchange="onTransport">
+          <view class="picker-in">
+            <text>{{form.transport}}</text>
+            <view class="arrow"></view>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <!-- ⑦ 适合人群（多选标签） -->
+    <view class="field">
+      <text class="label">⑦ 适合人群（可多选）</text>
+      <view class="tags crowd-tags">
+        <text
+          class="tag crowd {{item.on ? 'on' : ''}}"
+          wx:for="{{crowdOptions}}"
+          wx:key="name"
+          data-index="{{index}}"
+          bindtap="toggleCrowd"
+        >{{item.name}}</text>
+      </view>
+    </view>
+
+    <!-- ⑧ 最佳出行月份（下拉） -->
+    <view class="field">
+      <text class="label">⑧ 最佳出行月份</text>
+      <picker class="picker" range="{{months}}" value="{{monthIdx}}" bindchange="onMonth">
+        <view class="picker-in">
+          <text>{{form.month}}</text>
+          <view class="arrow"></view>
+        </view>
+      </picker>
+    </view>
+
+    <!-- ⑨ 亮点关键词（逗号分隔，供 AI 检索优化） -->
+    <view class="field">
+      <text class="label">⑨ 亮点关键词（多个用逗号隔开）</text>
+      <input class="input" placeholder="如：洱海骑行, 古城夜市, 苍山索道" value="{{form.keywords}}" data-field="keywords" bindinput="onInput" />
+      <text class="hint">关键词和行程描述会发送给本地 DeepSeek-R1 大模型，自动生成优化建议</text>
+    </view>
+
+    <!-- ⑩ 避雷提醒（多行） -->
+    <view class="field">
+      <text class="label">⑩ 避雷提醒</text>
+      <textarea class="textarea" placeholder="踩过的坑、不推荐的项目…" value="{{form.avoid}}" data-field="avoid" bindinput="onInput" />
+    </view>
+
+    <!-- ⑪ 详细行程描述（多行） -->
+    <view class="field">
+      <text class="label">⑪ 详细行程描述</text>
+      <textarea class="textarea tall" placeholder="按天描述路线安排、食宿建议…" value="{{form.detail}}" data-field="detail" bindinput="onInput" />
+    </view>
+
+    <!-- ⑫ 发布昵称 -->
+    <view class="field">
+      <text class="label">⑫ 发布昵称</text>
+      <input class="input" placeholder="社区里展示的名字" value="{{form.author}}" data-field="author" bindinput="onInput" />
+    </view>
+  </view>
+
+  <!-- 提交保存 -->
+  <view class="submit-wrap">
+    <button class="btn submit" bindtap="onSubmit" hover-class="tap-hover" disabled="{{submitting}}">发布到社区</button>
+  </view>
+</view>
