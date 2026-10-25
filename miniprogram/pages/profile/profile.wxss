@@ -1,0 +1,60 @@
+.avatar-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12rpx 0 20rpx;
+}
+
+.avatar {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+}
+
+.avatar-note {
+  margin-top: 16rpx;
+  font-size: 22rpx;
+  color: var(--faint);
+}
+
+.field {
+  margin-top: 28rpx;
+}
+
+.label {
+  display: block;
+  margin-bottom: 12rpx;
+  font-size: 22rpx;
+  letter-spacing: 2rpx;
+  color: var(--muted);
+}
+
+.input {
+  width: 100%;
+  padding: 8rpx 0 16rpx;
+  border-bottom: 1rpx solid var(--line);
+  font-size: 30rpx;
+}
+
+.name {
+  font-size: 40rpx;
+  font-weight: 600;
+}
+
+.bio {
+  height: 140rpx;
+  line-height: 1.6;
+}
+
+.save {
+  margin-top: 56rpx;
+}
+
+.foot {
+  display: block;
+  margin-top: 20rpx;
+  text-align: center;
+  font-size: 22rpx;
+  line-height: 1.6;
+  color: var(--faint);
+}

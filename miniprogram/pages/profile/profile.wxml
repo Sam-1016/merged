@@ -1,0 +1,23 @@
+<nav-bar title="编辑资料" solid="{{true}}" theme="dark" />
+<view class="pad-page">
+  <view class="avatar-wrap">
+    <image class="avatar" src="{{avatar}}" mode="aspectFill" />
+    <text class="avatar-note">头像在这一版先固定</text>
+  </view>
+
+  <view class="field">
+    <text class="label">名字</text>
+    <input class="input name" value="{{name}}" maxlength="12" bindinput="onName" />
+  </view>
+  <view class="field">
+    <text class="label">一句话</text>
+    <textarea class="input bio" value="{{bio}}" maxlength="40" bindinput="onBio" />
+  </view>
+  <view class="field">
+    <text class="label">常驻</text>
+    <input class="input" value="{{city}}" maxlength="8" bindinput="onCity" />
+  </view>
+
+  <view class="btn save" bindtap="onSave">保存</view>
+  <text class="foot">资料会保存在本机，重新打开小程序仍然在。</text>
+</view>

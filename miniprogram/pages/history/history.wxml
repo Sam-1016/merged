@@ -1,0 +1,12 @@
+<nav-bar title="浏览足迹" solid="{{true}}" theme="dark" />
+<view class="pad-page">
+  <text class="lead">最近翻过的攻略，还留在这一页。</text>
+  <view class="g-row" wx:for="{{list}}" wx:key="id" data-id="{{item.id}}" bindtap="onGuide" hover-class="tap-hover">
+    <image class="g-cover" src="{{item.cover}}" mode="aspectFill" />
+    <view class="g-body">
+      <text class="g-cat">{{item.time}}</text>
+      <text class="g-title two-line">{{item.title}}</text>
+      <text class="g-meta">{{item.city}} · {{item.days}}天</text>
+    </view>
+  </view>
+</view>

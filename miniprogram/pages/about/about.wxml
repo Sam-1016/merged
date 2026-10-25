@@ -1,0 +1,26 @@
+<nav-bar title="关于漫途" solid="{{true}}" theme="dark" />
+<view class="pad-page">
+  <view class="brand">
+    <view class="mark">径</view>
+    <text class="name">漫途</text>
+    <text class="slogan">把好风景，写成能跟着走的路</text>
+  </view>
+
+  <text class="para">漫途是一本可以翻的旅行笔记。每篇攻略都按天数写：哪一段该慢，哪一顿该问价，哪一个景点其实可以删掉。</text>
+  <text class="para">这一版先把阅读的界面铺完整。收藏、筛选和搜索都在当前打开里生效，还没有账号，也没有真正的发布。</text>
+
+  <view class="rows">
+    <view class="row">
+      <text>版本</text>
+      <text class="val">1.0.0</text>
+    </view>
+    <view class="row">
+      <text>内容</text>
+      <text class="val">界面预览</text>
+    </view>
+    <view class="row">
+      <text>配图</text>
+      <text class="val">预览素材</text>
+    </view>
+  </view>
+</view>

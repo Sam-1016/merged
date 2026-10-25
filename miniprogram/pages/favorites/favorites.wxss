@@ -1,0 +1,29 @@
+.lead {
+  display: block;
+  margin-bottom: 8rpx;
+  font-size: 26rpx;
+  color: var(--muted);
+}
+
+.fav {
+  display: flex;
+  align-items: center;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  border-bottom: none;
+}
+
+.fav {
+  border-bottom: 1rpx solid var(--line);
+}
+
+.heart {
+  width: 64rpx;
+  text-align: center;
+  color: var(--persimmon);
+  font-size: 34rpx;
+  flex: none;
+}

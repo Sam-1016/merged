@@ -1,0 +1,44 @@
+<nav-bar title="偏好设置" solid="{{true}}" theme="dark" />
+<view class="pad-page">
+  <view class="group">
+    <text class="group-title">通知</text>
+    <view class="cell">
+      <view class="cell-copy">
+        <text class="cell-label">行程提醒</text>
+        <text class="cell-desc">出发前一天，提醒你看一眼天气</text>
+      </view>
+      <switch checked="{{push}}" color="#1F4D3A" data-field="push" bindchange="onToggle" />
+    </view>
+  </view>
+
+  <view class="group">
+    <text class="group-title">阅读</text>
+    <view class="cell">
+      <view class="cell-copy">
+        <text class="cell-label">高清配图</text>
+        <text class="cell-desc">仅在无线网络下加载大图</text>
+      </view>
+      <switch checked="{{hd}}" color="#1F4D3A" data-field="hd" bindchange="onToggle" />
+    </view>
+    <view class="cell">
+      <view class="cell-copy">
+        <text class="cell-label">季节提示</text>
+        <text class="cell-desc">在攻略里标出适宜前往的月份</text>
+      </view>
+      <switch checked="{{season}}" color="#1F4D3A" data-field="season" bindchange="onToggle" />
+    </view>
+  </view>
+
+  <view class="group">
+    <text class="group-title">推荐</text>
+    <view class="cell">
+      <view class="cell-copy">
+        <text class="cell-label">按最近浏览推荐</text>
+        <text class="cell-desc">首页多放一些你刚看过的方向</text>
+      </view>
+      <switch checked="{{recommend}}" color="#1F4D3A" data-field="recommend" bindchange="onToggle" />
+    </view>
+  </view>
+
+  <text class="foot">这些开关只在本次打开时保留，用来预览界面。</text>
+</view>

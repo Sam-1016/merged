@@ -1,0 +1,62 @@
+.brand {
+  padding: 24rpx 0 12rpx;
+}
+
+.mark {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 28rpx;
+  background: var(--pine);
+  color: #f6f1e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 44rpx;
+}
+
+.name {
+  display: block;
+  margin-top: 24rpx;
+  font-size: 56rpx;
+  font-weight: 600;
+  letter-spacing: 6rpx;
+}
+
+.slogan {
+  display: block;
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: var(--muted);
+}
+
+.para {
+  display: block;
+  margin-top: 28rpx;
+  font-size: 28rpx;
+  line-height: 1.85;
+  color: #3a342e;
+}
+
+.rows {
+  margin-top: 36rpx;
+  background: var(--card);
+  border-radius: 24rpx;
+  overflow: hidden;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 28rpx;
+  border-bottom: 1rpx solid var(--line);
+  font-size: 28rpx;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.val {
+  color: var(--muted);
+}

@@ -1,0 +1,61 @@
+.group {
+  margin-top: 12rpx;
+  margin-bottom: 28rpx;
+}
+
+.group-title {
+  display: block;
+  margin: 12rpx 8rpx 14rpx;
+  font-size: 22rpx;
+  letter-spacing: 3rpx;
+  color: var(--muted);
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  padding: 26rpx 28rpx;
+  background: var(--card);
+  border-bottom: 1rpx solid var(--line);
+}
+
+.group .cell:first-of-type {
+  border-radius: 24rpx 24rpx 0 0;
+}
+
+.group .cell:last-child {
+  border-radius: 0 0 24rpx 24rpx;
+  border-bottom: none;
+}
+
+.group .cell:first-of-type:last-child {
+  border-radius: 24rpx;
+}
+
+.cell-copy {
+  flex: 1;
+  min-width: 0;
+  margin-right: 20rpx;
+}
+
+.cell-label {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.cell-desc {
+  display: block;
+  margin-top: 6rpx;
+  font-size: 22rpx;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.foot {
+  display: block;
+  margin-top: 12rpx;
+  font-size: 22rpx;
+  line-height: 1.6;
+  color: var(--faint);
+}

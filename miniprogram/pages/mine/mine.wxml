@@ -1,0 +1,60 @@
+<view class="status-mask" style="height: {{statusBarHeight}}px;"></view>
+<view class="pad-page" style="padding-top: {{statusBarHeight}}px;">
+  <view class="profile" bindtap="onProfileTap" hover-class="tap-hover">
+    <image class="avatar" src="{{profile.avatar}}" mode="aspectFill" />
+    <view class="profile-body">
+      <text class="name">{{profile.name}}</text>
+      <text class="bio">{{profile.bio}}</text>
+      <view class="city" wx:if="{{profile.city}}">{{profile.city}}</view>
+    </view>
+  </view>
+  <view class="edit" bindtap="goProfile" hover-class="tap-hover">{{loggedIn ? '编辑资料' : '去登录'}}</view>
+
+  <view class="stats">
+    <view class="stat" bindtap="goFav" hover-class="tap-hover">
+      <text class="stat-num">{{favCount}}</text>
+      <text class="stat-lbl">收藏</text>
+    </view>
+    <view class="stat" bindtap="goHistory" hover-class="tap-hover">
+      <text class="stat-num">{{footCount}}</text>
+      <text class="stat-lbl">足迹</text>
+    </view>
+    <view class="stat" bindtap="goDrafts" hover-class="tap-hover">
+      <text class="stat-num">{{draftCount}}</text>
+      <text class="stat-lbl">草案</text>
+    </view>
+  </view>
+
+  <view class="draft-banner" bindtap="goDrafts" hover-class="tap-hover">
+    <view>
+      <text class="draft-kicker">进行中</text>
+      <text class="draft-title">你有 {{draftCount}} 条行程草案</text>
+    </view>
+    <text class="draft-go">查看</text>
+  </view>
+
+  <view class="sec-head foot-head">
+    <view>
+      <text class="sec-kicker">足迹</text>
+      <text class="sec-title">去过的样子</text>
+    </view>
+  </view>
+  <scroll-view class="film" scroll-x show-scrollbar="{{false}}">
+    <view class="shot" wx:for="{{footprints}}" wx:key="id" data-id="{{item.id}}" bindtap="onFoot" style="margin-right: {{index === footprints.length - 1 ? '0' : '16rpx'}};">
+      <image src="{{item.cover}}" mode="aspectFill" />
+      <text class="shot-name">{{item.name}}</text>
+    </view>
+  </scroll-view>
+
+  <view class="menu">
+    <view class="menu-item" wx:for="{{menus}}" wx:key="url" data-url="{{item.url}}" bindtap="onMenu" hover-class="tap-hover">
+      <view class="menu-copy">
+        <text class="menu-title">{{item.title}}</text>
+        <text class="menu-desc">{{item.desc}}</text>
+      </view>
+      <view class="arrow"></view>
+    </view>
+  </view>
+
+  <view class="version">漫途 1.0.0</view>
+</view>
